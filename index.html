@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seekers for the Quantum Clock - Ancient Egyptian Physics Competition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
         :root {
             --primary-gold: #FFD700;
             --secondary-gold: #FFA500;
@@ -29,6 +23,17 @@
             --papyrus: #f5e6c8;
         }
         
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 50%, var(--light-blue) 100%);
             color: var(--text-primary);
@@ -37,7 +42,7 @@
             overflow-x: hidden;
         }
         
-        /* Premium Ancient Egyptian Background */
+        /* Optimized Background */
         .physics-bg {
             position: fixed;
             top: 0;
@@ -48,7 +53,6 @@
             overflow: hidden;
         }
         
-        /* Animated gradient orbs */
         .physics-bg::before {
             content: '';
             position: absolute;
@@ -62,28 +66,24 @@
                 radial-gradient(circle at 50% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 35%),
                 radial-gradient(circle at 80% 80%, rgba(159, 122, 234, 0.1) 0%, transparent 40%);
             animation: gradientOrbs 25s ease-in-out infinite;
+            will-change: transform;
         }
         
         @keyframes gradientOrbs {
             0%, 100% { 
                 transform: translate(0, 0) rotate(0deg); 
-                opacity: 1;
             }
             25% { 
                 transform: translate(5%, -5%) rotate(90deg); 
-                opacity: 0.8;
             }
             50% { 
                 transform: translate(-3%, 3%) rotate(180deg); 
-                opacity: 1;
             }
             75% { 
                 transform: translate(3%, -3%) rotate(270deg); 
-                opacity: 0.9;
             }
         }
         
-        /* Sophisticated hieroglyphic pattern */
         .physics-bg::after {
             content: '';
             position: absolute;
@@ -92,7 +92,7 @@
             right: 0;
             bottom: 0;
             background-image: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800"><defs><pattern id="egyptPattern" patternUnits="userSpaceOnUse" width="250" height="200"><g opacity="0.4"><polygon points="50,20 20,70 80,70" fill="none" stroke="%23FFD700" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="85" stroke="%23FFD700" stroke-width="2"/><circle cx="130" cy="40" r="15" fill="none" stroke="%23CD7F32" stroke-width="2"/><path d="M130 55 L130 80 M120 70 L140 70" stroke="%23CD7F32" stroke-width="2.5"/><path d="M180 30 Q200 20 220 30 L220 60 Q200 70 180 60 Z" fill="none" stroke="%23FFD700" stroke-width="1.8"/><circle cx="200" cy="35" r="5" fill="%23FFD700"/><rect x="40" y="120" width="20" height="35" fill="none" stroke="%23CD7F32" stroke-width="2"/><polygon points="100,120 120,140 115,160 85,160 80,140" fill="none" stroke="%23FFD700" stroke-width="1.5"/><line x1="150" y1="120" x2="180" y2="120" stroke="%23CD7F32" stroke-width="2"/><line x1="165" y1="110" x2="165" y2="130" stroke="%23CD7F32" stroke-width="2"/><path d="M200 120 L220 115 L230 130 L220 145 L200 140 Z" fill="none" stroke="%23FFD700" stroke-width="1.5"/></g></pattern><filter id="glow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="1000" height="800" fill="url(%23egyptPattern)" filter="url(%23glow)"/></svg>');
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800"><defs><pattern id="egyptPattern" patternUnits="userSpaceOnUse" width="250" height="200"><g opacity="0.4"><polygon points="50,20 20,70 80,70" fill="none" stroke="%23FFD700" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="85" stroke="%23FFD700" stroke-width="2"/><circle cx="130" cy="40" r="15" fill="none" stroke="%23CD7F32" stroke-width="2"/><path d="M130 55 L130 80 M120 70 L140 70" stroke="%23CD7F32" stroke-width="2.5"/><path d="M180 30 Q200 20 220 30 L220 60 Q200 70 180 60 Z" fill="none" stroke="%23FFD700" stroke-width="1.8"/><circle cx="200" cy="35" r="5" fill="%23FFD700"/><rect x="40" y="120" width="20" height="35" fill="none" stroke="%23CD7F32" stroke-width="2"/><polygon points="100,120 120,140 115,160 85,160 80,140" fill="none" stroke="%23FFD700" stroke-width="1.5"/><line x1="150" y1="120" x2="180" y2="120" stroke="%23CD7F32" stroke-width="2"/><line x1="165" y1="110" x2="165" y2="130" stroke="%23CD7F32" stroke-width="2"/><path d="M200 120 L220 115 L230 130 L220 145 L200 140 Z" fill="none" stroke="%23FFD700" stroke-width="1.5"/></g></pattern></defs><rect width="1000" height="800" fill="url(%23egyptPattern)"/></svg>');
             background-size: 1000px 800px;
             opacity: 0.12;
             animation: patternDrift 120s linear infinite;
@@ -103,25 +103,25 @@
             to { background-position: 1000px 800px; }
         }
         
-        /* Floating golden particles */
-        .particle {
+        /* Optimized Particles */
+        .particles-container {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
             background: var(--primary-gold);
             border-radius: 50%;
             opacity: 0;
-            z-index: -1;
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
             animation: particleRise 25s ease-in-out infinite;
-        }
-        
-        .particle:nth-child(odd) {
-            width: 4px;
-            height: 4px;
-        }
-        
-        .particle:nth-child(even) {
-            width: 2px;
-            height: 2px;
+            will-change: transform, opacity;
         }
         
         @keyframes particleRise {
@@ -145,23 +145,7 @@
             }
         }
         
-        /* Constellation dots */
-        .constellation {
-            position: fixed;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0;
-            animation: twinkle 4s ease-in-out infinite;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.5); }
-        }
-        
+        /* Optimized Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -171,6 +155,12 @@
             border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
             padding: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.7rem 1rem;
+            background: rgba(10, 14, 39, 0.98);
         }
         
         .nav-container {
@@ -243,12 +233,17 @@
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            transform: scale(1.1);
         }
         
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         
         .nav-link {
@@ -258,16 +253,36 @@
             border-radius: 8px;
             transition: all 0.3s ease;
             cursor: pointer;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: width 0.3s ease;
         }
         
         .nav-link:hover,
         .nav-link.active {
             color: var(--primary-gold);
-            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 100%;
         }
         
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
+            .menu-toggle { 
+                display: block; 
+            }
             .nav-links {
                 position: fixed;
                 top: 70px;
@@ -296,19 +311,29 @@
         
         .page {
             display: none;
-            animation: fadeIn 0.6s ease;
+            animation: fadeIn 0.5s ease;
         }
         
-        .page.active { display: block; }
+        .page.active { 
+            display: block; 
+        }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
         
+        /* Optimized Hero Section */
         .hero {
             text-align: center;
             padding: 3rem 0;
+            position: relative;
         }
         
         .hero-pyramids {
@@ -355,7 +380,6 @@
             z-index: 2;
         }
         
-        /* Clock Styles */
         .pyramid-clock {
             position: absolute;
             width: 80px;
@@ -400,6 +424,7 @@
             transform-origin: bottom center;
             background: var(--primary-gold);
             border-radius: 2px;
+            transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.8, 1);
         }
         
         .clock-hour {
@@ -450,10 +475,13 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
         
         @media (min-width: 768px) {
-            .hero-title { font-size: 3.5rem; }
+            .hero-title { 
+                font-size: 3.5rem; 
+            }
         }
         
         .hero-subtitle {
@@ -481,6 +509,19 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
         }
         
         .cta-button:hover {
@@ -488,6 +529,11 @@
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
         }
         
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Optimized Cards */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
@@ -495,6 +541,24 @@
             border-radius: 20px;
             padding: 2rem;
             margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         
         .card-title {
@@ -502,6 +566,9 @@
             font-weight: 700;
             color: var(--primary-gold);
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .card-content {
@@ -523,15 +590,34 @@
             text-align: center;
             border: 1px solid var(--glass-border);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--accent-cyan));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
         }
         
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
         .feature-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+            color: var(--primary-gold);
         }
         
         .feature-title {
@@ -546,8 +632,10 @@
             font-size: 0.95rem;
         }
         
+        /* Optimized Forms */
         .form-group {
             margin-bottom: 1.5rem;
+            position: relative;
         }
         
         .form-label {
@@ -555,6 +643,7 @@
             color: var(--primary-gold);
             font-weight: 600;
             margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
         }
         
         .form-input,
@@ -567,11 +656,7 @@
             border-radius: 8px;
             color: var(--text-primary);
             font-size: 1rem;
-        }
-        
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
+            transition: all 0.3s ease;
         }
         
         .form-input:focus,
@@ -579,6 +664,13 @@
         .form-textarea:focus {
             outline: none;
             border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
         }
         
         .submit-btn {
@@ -592,18 +684,61 @@
             font-size: 1.1rem;
             width: 100%;
             text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
         }
         
         .submit-btn:hover {
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
         }
         
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Optimized Timeline */
         .timeline-item {
             background: rgba(255, 215, 0, 0.05);
             padding: 1.5rem;
             border-radius: 15px;
             border-left: 4px solid var(--primary-gold);
             margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        
+        .timeline-item:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(5px);
         }
         
         .timeline-date {
@@ -613,50 +748,7 @@
             margin-bottom: 0.5rem;
         }
         
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .award-card {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-        
-        .award-title {
-            color: var(--primary-gold);
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .award-description {
-            color: var(--text-secondary);
-        }
-        
-        .coming-soon {
-            text-align: center;
-            padding: 3rem;
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 15px;
-            border: 2px dashed rgba(255, 215, 0, 0.3);
-        }
-        
-        .coming-soon h3 {
-            color: var(--primary-gold);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .coming-soon p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-        
+        /* Optimized Physics Domains */
         .physics-domains {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -670,11 +762,29 @@
             border-radius: 15px;
             border: 1px solid rgba(255, 215, 0, 0.2);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .domain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gold);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
         
         .domain-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary-gold);
+        }
+        
+        .domain-card:hover::before {
+            transform: scaleX(1);
         }
         
         .domain-name {
@@ -695,6 +805,7 @@
             font-size: 0.9rem;
         }
         
+        /* Target Audience */
         .target-audience {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -707,6 +818,11 @@
             padding: 1.5rem;
             border-radius: 15px;
             border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .audience-item:hover {
+            transform: translateY(-5px);
         }
         
         .audience-item h4 {
@@ -719,38 +835,87 @@
             color: var(--text-secondary);
         }
         
-        .footer {
+        /* Coming Soon */
+        .coming-soon {
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-secondary);
+            padding: 3rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 15px;
+            border: 2px dashed rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
         }
         
-        .info-grid {
+        .coming-soon:hover {
+            transform: scale(1.02);
+        }
+        
+        .coming-soon h3 {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .coming-soon p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* Empty Section */
+        .empty-section {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 15px;
+            border: 2px dashed rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .empty-section:hover {
+            transform: scale(1.02);
+        }
+        
+        .empty-section h3 {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-section p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Grid */
+        .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
         
-        .info-card {
+        .contact-info {
             background: var(--glass-bg);
             padding: 1.5rem;
             border-radius: 15px;
             border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
         }
         
-        .info-card h3 {
+        .contact-info:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-info h3 {
             color: var(--primary-gold);
             margin-bottom: 1rem;
         }
         
-        .info-card p {
+        .contact-info p {
             color: var(--text-secondary);
-            line-height: 1.6;
+            margin-bottom: 0.5rem;
         }
         
+        /* Optimized FAQ */
         .faq-item {
             background: rgba(255, 215, 0, 0.05);
             padding: 1.5rem;
@@ -759,10 +924,29 @@
             margin-bottom: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-gold);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
         
         .faq-item:hover {
             background: rgba(255, 215, 0, 0.08);
+            transform: translateX(5px);
+        }
+        
+        .faq-item:hover::before {
+            transform: scaleY(1);
         }
         
         .faq-question {
@@ -779,7 +963,7 @@
             color: var(--text-secondary);
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.5s ease;
         }
         
         .faq-item.active .faq-answer {
@@ -795,47 +979,65 @@
             transform: rotate(180deg);
         }
         
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .contact-info {
-            background: var(--glass-bg);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid var(--glass-border);
-        }
-        
-        .contact-info h3 {
-            color: var(--primary-gold);
-            margin-bottom: 1rem;
-        }
-        
-        .contact-info p {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .empty-section {
+        /* Footer */
+        .footer {
             text-align: center;
-            padding: 3rem;
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 15px;
-            border: 2px dashed rgba(255, 215, 0, 0.3);
-        }
-        
-        .empty-section h3 {
-            color: var(--primary-gold);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .empty-section p {
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--glass-border);
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .container {
+                padding: 5rem 1rem 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .glass-card {
+                padding: 1.5rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .physics-domains {
+                grid-template-columns: 1fr;
+            }
+            
+            .target-audience {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Loading animation for better perceived performance */
+        .loading {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loaded {
+            opacity: 1;
         }
     </style>
 </head>
@@ -843,19 +1045,11 @@
     <!-- Background Elements -->
     <div class="physics-bg"></div>
     
-    <!-- Floating Particles -->
-    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-    <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
-    <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
-    <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
-    <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
-    <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
-    <div class="particle" style="left: 90%; animation-delay: 16s;"></div>
+    <!-- Optimized Particles Container -->
+    <div class="particles-container" id="particles-container"></div>
     
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
                 <div class="pyramid-nav-logo">
@@ -865,8 +1059,8 @@
                 </div>
                 <span>Seekers for the Quantum Clock</span>
             </div>
-            <button class="menu-toggle">☰</button>
-            <ul class="nav-links">
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+            <ul class="nav-links" id="nav-links">
                 <li><a class="nav-link active" data-target="home">Home</a></li>
                 <li><a class="nav-link" data-target="about">About</a></li>
                 <li><a class="nav-link" data-target="timeline">Timeline</a></li>
@@ -916,10 +1110,9 @@
             </div>
             
             <div class="glass-card">
-                <h2 class="card-title">About the Competition</h2>
+                <h2 class="card-title"><i class="fas fa-info-circle"></i> About the Competition</h2>
                 <div class="card-content">
                     <p>Seekers for the Quantum Clock is a unique international physics competition that blends ancient Egyptian mythology with modern physics challenges. Teams of high school students from around the world will embark on a virtual journey through Egypt, solving physics puzzles to unlock the secrets of the Quantum Clock.</p>
-                    <p>Expected participation: 900-1,100 high school students.</p>
                 </div>
             </div>
             
@@ -945,7 +1138,7 @@
         <!-- About Page -->
         <section id="about" class="page">
             <div class="glass-card">
-                <h2 class="card-title">About Seekers for the Quantum Clock</h2>
+                <h2 class="card-title"><i class="fas fa-landmark"></i> About Seekers for the Quantum Clock</h2>
                 <div class="card-content">
                     <p>Seekers for the Quantum Clock is an innovative international physics competition created and organized by high school students in Egypt. Our mission is to make physics education engaging and accessible by combining it with the rich narrative of ancient Egyptian adventure.</p>
                     <p>Participants form teams of three and work together to solve story-driven physics puzzles that are integrated into an immersive Egyptian mythology narrative. As teams progress through the competition, they unlock chapters of an epic story about the mysterious Quantum Clock - an ancient artifact said to control the flow of time itself.</p>
@@ -954,7 +1147,7 @@
             </div>
             
             <div class="glass-card">
-                <h2 class="card-title">Competition Format</h2>
+                <h2 class="card-title"><i class="fas fa-tasks"></i> Competition Format</h2>
                 <div class="card-content">
                     <p>The competition is divided into two main phases:</p>
                     <ul>
@@ -966,7 +1159,7 @@
             </div>
             
             <div class="glass-card">
-                <h2 class="card-title">About Us</h2>
+                <h2 class="card-title"><i class="fas fa-users"></i> About Us</h2>
                 <div class="card-content">
                     <p>We are a group of passionate high school students from Egypt who share a love for physics and our country's rich history. Our team came together with the vision of creating a unique educational experience that would inspire students worldwide to explore the wonders of physics.</p>
                     <p>Our organizing committee includes students specializing in physics, mathematics, computer science, and history, allowing us to create a truly interdisciplinary competition that bridges ancient wisdom with modern scientific knowledge.</p>
@@ -978,7 +1171,7 @@
         <!-- Timeline Page -->
         <section id="timeline" class="page">
             <div class="glass-card">
-                <h2 class="card-title">Competition Timeline</h2>
+                <h2 class="card-title"><i class="fas fa-calendar-alt"></i> Competition Timeline</h2>
                 <div class="card-content">
                     <div class="timeline-item">
                         <div class="timeline-date">December 20 - January 15</div>
@@ -1011,7 +1204,7 @@
         <!-- Physics Domains Page -->
         <section id="domains" class="page">
             <div class="glass-card">
-                <h2 class="card-title">Physics Domains</h2>
+                <h2 class="card-title"><i class="fas fa-atom"></i> Physics Domains</h2>
                 <p class="card-content">The competition covers six major physics domains, each represented by an ancient Egyptian artifact in our adventure narrative:</p>
                 
                 <div class="physics-domains">
@@ -1052,7 +1245,7 @@
         <!-- Target Audience Page -->
         <section id="audience" class="page">
             <div class="glass-card">
-                <h2 class="card-title">Target Audience</h2>
+                <h2 class="card-title"><i class="fas fa-bullseye"></i> Target Audience</h2>
                 <p class="card-content">Seekers for the Quantum Clock is designed for:</p>
                 
                 <div class="target-audience">
@@ -1075,19 +1268,14 @@
                 </div>
             </div>
             
-            <div class="glass-card">
-                <h2 class="card-title">Expected Participation</h2>
-                <div class="card-content">
-                    <p>We expect between 900-1,100 high school students to participate in this year's competition, forming approximately 300-370 teams from around the world.</p>
-                    <p>This diverse participation will create a vibrant international community of young physicists exploring the intersection of science and ancient Egyptian culture.</p>
-                </div>
+            
             </div>
         </section>
         
         <!-- Questions Page -->
         <section id="questions" class="page">
             <div class="glass-card">
-                <h2 class="card-title">Competition Questions</h2>
+                <h2 class="card-title"><i class="fas fa-question-circle"></i> Competition Questions</h2>
                 <div class="empty-section">
                     <h3>Questions Will Be Available During Competition</h3>
                     <p>All competition questions and challenges will be released during the competition timeline as teams progress through the Egyptian adventure narrative.</p>
@@ -1099,7 +1287,7 @@
         <!-- Registration Page -->
         <section id="register" class="page">
             <div class="glass-card">
-                <h2 class="card-title">Registration</h2>
+                <h2 class="card-title"><i class="fas fa-user-plus"></i> Registration</h2>
                 <div class="card-content">
                     <p>Registration for Seekers for the Quantum Clock is open from December 20 to January 15. Form your team of 2-3 participants and register using the form below.</p>
                     
@@ -1143,7 +1331,7 @@
         <!-- Prizes Page -->
         <section id="prizes" class="page">
             <div class="glass-card">
-                <h2 class="card-title">Prizes</h2>
+                <h2 class="card-title"><i class="fas fa-trophy"></i> Prizes</h2>
                 <div class="coming-soon">
                     <h3>Prizes Coming Soon</h3>
                     <p>We are finalizing an exciting prize package for our winners. Stay tuned for announcements!</p>
@@ -1154,7 +1342,7 @@
         <!-- FAQ Page -->
         <section id="faq" class="page">
             <div class="glass-card">
-                <h2 class="card-title">Frequently Asked Questions</h2>
+                <h2 class="card-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
                 
                 <div class="faq-item">
                     <div class="faq-question">
@@ -1221,7 +1409,7 @@
         <!-- Contact Us Page -->
         <section id="contact" class="page">
             <div class="glass-card">
-                <h2 class="card-title">Contact Us</h2>
+                <h2 class="card-title"><i class="fas fa-envelope"></i> Contact Us</h2>
                 
                 <div class="contact-grid">
                     <div class="contact-info">
@@ -1279,112 +1467,263 @@
     </footer>
 
     <script>
-        // Navigation functionality
+        // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
+            // Initialize all components
+            initNavigation();
+            initParticles();
+            initForms();
+            initFAQ();
+            initClock();
+            initScrollEffects();
             
-            menuToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-            });
-            
-            // Page navigation
+            // Mark page as loaded for smooth transitions
+            document.body.classList.add('loaded');
+        });
+        
+        function initNavigation() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
             const navLinksList = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('.page');
             
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+            
+            // Page navigation
             navLinksList.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
                     const target = this.getAttribute('data-target');
                     
                     // Update active nav link
                     navLinksList.forEach(navLink => navLink.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Show target page
-                    pages.forEach(page => page.classList.remove('active'));
-                    document.getElementById(target).classList.add('active');
+                    // Show target page with smooth transition
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === target) {
+                            setTimeout(() => {
+                                page.classList.add('active');
+                            }, 50);
+                        }
+                    });
                     
                     // Close mobile menu if open
                     navLinks.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
             
             // CTA button navigation
             const ctaButton = document.querySelector('.cta-button');
-            ctaButton.addEventListener('click', function() {
-                const target = this.getAttribute('data-target');
-                
-                // Update active nav link
-                navLinksList.forEach(navLink => navLink.classList.remove('active'));
-                document.querySelector(`[data-target="${target}"]`).classList.add('active');
-                
-                // Show target page
-                pages.forEach(page => page.classList.remove('active'));
-                document.getElementById(target).classList.add('active');
-            });
-            
-            // Form submission
-            const registrationForm = document.getElementById('registration-form');
-            registrationForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for registering for Seekers for the Quantum Clock! We will contact you with further details.');
-                registrationForm.reset();
-            });
-            
-            // Contact form submission
-            const contactForm = document.getElementById('contact-form');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
-            });
-            
-            // FAQ toggle functionality
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    this.classList.toggle('active');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // Update active nav link
+                    navLinksList.forEach(navLink => navLink.classList.remove('active'));
+                    document.querySelector(`[data-target="${target}"]`).classList.add('active');
+                    
+                    // Show target page
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === target) {
+                            setTimeout(() => {
+                                page.classList.add('active');
+                            }, 50);
+                        }
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
-            });
-            
-            // Create constellation dots
-            createConstellation();
-            
-            // Update clock hands
-            updateClock();
-            setInterval(updateClock, 1000);
-        });
-        
-        function createConstellation() {
-            const body = document.querySelector('body');
-            for (let i = 0; i < 50; i++) {
-                const star = document.createElement('div');
-                star.className = 'constellation';
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.animationDelay = `${Math.random() * 4}s`;
-                body.appendChild(star);
             }
         }
         
-        function updateClock() {
-            const now = new Date();
-            const hours = now.getHours() % 12;
-            const minutes = now.getMinutes();
-            const seconds = now.getSeconds();
+        function initParticles() {
+            const container = document.getElementById('particles-container');
+            const particleCount = 15; // Reduced for better performance
             
-            const hourHand = document.querySelector('.clock-hour');
-            const minuteHand = document.querySelector('.clock-minute');
-            const secondHand = document.querySelector('.clock-second');
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random properties
+                const size = Math.random() * 4 + 2;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = 20 + Math.random() * 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        function initForms() {
+            // Registration form
+            const registrationForm = document.getElementById('registration-form');
+            if (registrationForm) {
+                registrationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Thank you for registering for Seekers for the Quantum Clock! We will contact you with further details.');
+                    this.reset();
+                });
+            }
             
-            const hourDeg = (hours * 30) + (minutes * 0.5);
-            const minuteDeg = (minutes * 6) + (seconds * 0.1);
-            const secondDeg = seconds * 6;
+            // Contact form
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                });
+            }
             
-            hourHand.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
-            minuteHand.style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
-            secondHand.style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+            // Add focus effects to form inputs
+            const formInputs = document.querySelectorAll('.form-input, .form-textarea, .form-select');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (this.value === '') {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+        }
+        
+        function initFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const isActive = this.classList.contains('active');
+                    
+                    // Close all FAQ items
+                    faqItems.forEach(faq => faq.classList.remove('active'));
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        this.classList.add('active');
+                    }
+                });
+            });
+        }
+        
+        function initClock() {
+            function updateClock() {
+                const now = new Date();
+                const hours = now.getHours() % 12;
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                
+                const hourHand = document.querySelector('.clock-hour');
+                const minuteHand = document.querySelector('.clock-minute');
+                const secondHand = document.querySelector('.clock-second');
+                
+                const hourDeg = (hours * 30) + (minutes * 0.5);
+                const minuteDeg = (minutes * 6) + (seconds * 0.1);
+                const secondDeg = seconds * 6;
+                
+                if (hourHand) hourHand.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+                if (minuteHand) minuteHand.style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
+                if (secondHand) secondHand.style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+            }
+            
+            // Update clock immediately and then every second
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+        
+        function initScrollEffects() {
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Add parallax effect to background
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.physics-bg');
+                if (parallax) {
+                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+        }
+        
+function initScrollEffects() {
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Add parallax effect to background
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.physics-bg');
+                if (parallax) {
+                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+        }
+        
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--primary-gold);
+                color: var(--dark-blue);
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                z-index: 10000;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+                font-weight: 600;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
         }
     </script>
 </body>
