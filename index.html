@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seekers for the Quantum Clock - Ancient Egyptian Physics Competition</title>
+    <title>Pharaohs' Fragments - Ancient Egyptian Physics Competition</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -42,7 +42,7 @@
             overflow-x: hidden;
         }
         
-        /* Optimized Background */
+        /* Fixed Background - Won't move with scroll */
         .physics-bg {
             position: fixed;
             top: 0;
@@ -103,7 +103,7 @@
             to { background-position: 1000px 800px; }
         }
         
-        /* Optimized Particles */
+        /* Fixed Particles - Won't move with scroll */
         .particles-container {
             position: fixed;
             top: 0;
@@ -145,7 +145,7 @@
             }
         }
         
-        /* Optimized Navigation */
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -307,11 +307,14 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 6rem 1rem 2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .page {
             display: none;
             animation: fadeIn 0.5s ease;
+            position: relative;
         }
         
         .page.active { 
@@ -329,7 +332,7 @@
             }
         }
         
-        /* Optimized Hero Section */
+        /* Hero Section */
         .hero {
             text-align: center;
             padding: 3rem 0;
@@ -533,7 +536,7 @@
             left: 100%;
         }
         
-        /* Optimized Cards */
+        /* Cards */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
@@ -632,7 +635,7 @@
             font-size: 0.95rem;
         }
         
-        /* Optimized Forms */
+        /* Forms */
         .form-group {
             margin-bottom: 1.5rem;
             position: relative;
@@ -709,7 +712,7 @@
             left: 100%;
         }
         
-        /* Optimized Timeline */
+        /* Timeline */
         .timeline-item {
             background: rgba(255, 215, 0, 0.05);
             padding: 1.5rem;
@@ -748,7 +751,7 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Optimized Physics Domains */
+        /* Physics Domains */
         .physics-domains {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -915,7 +918,7 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Optimized FAQ */
+        /* FAQ */
         .faq-item {
             background: rgba(255, 215, 0, 0.05);
             padding: 1.5rem;
@@ -1042,10 +1045,10 @@
     </style>
 </head>
 <body>
-    <!-- Background Elements -->
+    <!-- Fixed Background Elements -->
     <div class="physics-bg"></div>
     
-    <!-- Optimized Particles Container -->
+    <!-- Fixed Particles Container -->
     <div class="particles-container" id="particles-container"></div>
     
     <!-- Navigation -->
@@ -1057,7 +1060,7 @@
                     <div class="pyramid-small-left"></div>
                     <div class="pyramid-small-right"></div>
                 </div>
-                <span>Seekers for the Quantum Clock</span>
+                <span>Pharaohs' Fragments</span>
             </div>
             <button class="menu-toggle" id="menu-toggle">☰</button>
             <ul class="nav-links" id="nav-links">
@@ -1103,24 +1106,25 @@
                         <div class="clock-marker" style="transform: rotate(330deg);"></div>
                     </div>
                 </div>
-                <h1 class="hero-title">SEEKERS FOR THE QUANTUM CLOCK</h1>
+                <h1 class="hero-title">PHARAOHS' FRAGMENTS COMPETITION</h1>
                 <p class="hero-subtitle">An International Physics Competition</p>
-                <p class="hero-description">An international physics competition organized by high school students in Egypt, combining Egyptian adventure narrative with physics education. Participants solve story-driven physics puzzles in teams of three.</p>
+                <p class="hero-description">An international physics competition organized by high school students in Egypt, combining Egyptian adventure narrative with physics education. Participants solve story-driven physics puzzles in teams of three to collect ancient fragments.</p>
                 <button class="cta-button" data-target="register">Register Now</button>
             </div>
             
             <div class="glass-card">
                 <h2 class="card-title"><i class="fas fa-info-circle"></i> About the Competition</h2>
                 <div class="card-content">
-                    <p>Seekers for the Quantum Clock is a unique international physics competition that blends ancient Egyptian mythology with modern physics challenges. Teams of high school students from around the world will embark on a virtual journey through Egypt, solving physics puzzles to unlock the secrets of the Quantum Clock.</p>
+                    <p>Pharaohs' Fragments is a unique international physics competition that blends ancient Egyptian mythology with modern physics challenges. Teams of high school students from around the world will embark on a virtual journey through Egypt, solving physics puzzles to collect the ancient fragments and unlock their power.</p>
+                    <p>Expected participation: 900-1,100 high school students.</p>
                 </div>
             </div>
             
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">⏱️</div>
-                    <h3 class="feature-title">Quantum Clock</h3>
-                    <p class="feature-description">Solve time-based physics challenges to unlock the secrets of the ancient Quantum Clock.</p>
+                    <h3 class="feature-title">Ancient Fragments</h3>
+                    <p class="feature-description">Collect six ancient Egyptian fragments by solving physics challenges to unlock their mysterious power.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔍</div>
@@ -1138,10 +1142,10 @@
         <!-- About Page -->
         <section id="about" class="page">
             <div class="glass-card">
-                <h2 class="card-title"><i class="fas fa-landmark"></i> About Seekers for the Quantum Clock</h2>
+                <h2 class="card-title"><i class="fas fa-landmark"></i> About Pharaohs' Fragments</h2>
                 <div class="card-content">
-                    <p>Seekers for the Quantum Clock is an innovative international physics competition created and organized by high school students in Egypt. Our mission is to make physics education engaging and accessible by combining it with the rich narrative of ancient Egyptian adventure.</p>
-                    <p>Participants form teams of three and work together to solve story-driven physics puzzles that are integrated into an immersive Egyptian mythology narrative. As teams progress through the competition, they unlock chapters of an epic story about the mysterious Quantum Clock - an ancient artifact said to control the flow of time itself.</p>
+                    <p>Pharaohs' Fragments is an innovative international physics competition created and organized by high school students in Egypt. Our mission is to make physics education engaging and accessible by combining it with the rich narrative of ancient Egyptian adventure.</p>
+                    <p>Participants form teams of three and work together to solve story-driven physics puzzles that are integrated into an immersive Egyptian mythology narrative. As teams progress through the competition, they collect six ancient fragments - powerful artifacts said to hold the key to understanding the universe's fundamental forces.</p>
                     <p>This competition is designed to challenge students' understanding of physics concepts while fostering teamwork, problem-solving skills, and cultural appreciation. By blending education with entertainment, we aim to inspire the next generation of physicists and engineers.</p>
                 </div>
             </div>
@@ -1152,7 +1156,7 @@
                     <p>The competition is divided into two main phases:</p>
                     <ul>
                         <li><strong>Phase 1: Preparation (45 days)</strong> - Participants receive study materials and practice problems focusing on calculus and physics fundamentals.</li>
-                        <li><strong>Phase 2: Competition Rounds</strong> - Teams compete in two rounds of physics challenges integrated with the Egyptian adventure narrative.</li>
+                        <li><strong>Phase 2: Competition Rounds</strong> - Teams compete in two rounds of physics challenges integrated with the Egyptian adventure narrative to collect the fragments.</li>
                     </ul>
                     <p>All competition questions and challenges will be released during the competition timeline as teams progress through the adventure.</p>
                 </div>
@@ -1163,7 +1167,7 @@
                 <div class="card-content">
                     <p>We are a group of passionate high school students from Egypt who share a love for physics and our country's rich history. Our team came together with the vision of creating a unique educational experience that would inspire students worldwide to explore the wonders of physics.</p>
                     <p>Our organizing committee includes students specializing in physics, mathematics, computer science, and history, allowing us to create a truly interdisciplinary competition that bridges ancient wisdom with modern scientific knowledge.</p>
-                    <p>We believe that learning should be an adventure, and through Seekers for the Quantum Clock, we aim to transform physics education into an exciting journey through time and space.</p>
+                    <p>We believe that learning should be an adventure, and through Pharaohs' Fragments, we aim to transform physics education into an exciting journey through time and space.</p>
                 </div>
             </div>
         </section>
@@ -1246,7 +1250,7 @@
         <section id="audience" class="page">
             <div class="glass-card">
                 <h2 class="card-title"><i class="fas fa-bullseye"></i> Target Audience</h2>
-                <p class="card-content">Seekers for the Quantum Clock is designed for:</p>
+                <p class="card-content">Pharaohs' Fragments is designed for:</p>
                 
                 <div class="target-audience">
                     <div class="audience-item">
@@ -1268,7 +1272,12 @@
                 </div>
             </div>
             
-            
+            <div class="glass-card">
+                <h2 class="card-title"><i class="fas fa-chart-line"></i> Expected Participation</h2>
+                <div class="card-content">
+                    <p>We expect between 900-1,100 high school students to participate in this year's competition, forming approximately 300-370 teams from around the world.</p>
+                    <p>This diverse participation will create a vibrant international community of young physicists exploring the intersection of science and ancient Egyptian culture.</p>
+                </div>
             </div>
         </section>
         
@@ -1279,7 +1288,7 @@
                 <div class="empty-section">
                     <h3>Questions Will Be Available During Competition</h3>
                     <p>All competition questions and challenges will be released during the competition timeline as teams progress through the Egyptian adventure narrative.</p>
-                    <p>The questions are designed to test your understanding of physics concepts while immersing you in the story of the Quantum Clock. Each round will feature problems related to the specific physics domains and Egyptian artifacts you encounter on your journey.</p>
+                    <p>The questions are designed to test your understanding of physics concepts while immersing you in the story of the Pharaohs' Fragments. Each round will feature problems related to the specific physics domains and Egyptian artifacts you encounter on your journey.</p>
                 </div>
             </div>
         </section>
@@ -1289,7 +1298,7 @@
             <div class="glass-card">
                 <h2 class="card-title"><i class="fas fa-user-plus"></i> Registration</h2>
                 <div class="card-content">
-                    <p>Registration for Seekers for the Quantum Clock is open from December 20 to January 15. Form your team of 2-3 participants and register using the form below.</p>
+                    <p>Registration for Pharaohs' Fragments is open from December 20 to January 15. Form your team of 2-3 participants and register using the form below.</p>
                     
                     <form id="registration-form">
                         <div class="form-group">
@@ -1414,19 +1423,19 @@
                 <div class="contact-grid">
                     <div class="contact-info">
                         <h3>General Inquiries</h3>
-                        <p>Email: info@quantumclockcompetition.com</p>
+                        <p>Email: info@pharaohsfragments.com</p>
                         <p>Phone: +20 123 456 7890</p>
                     </div>
                     
                     <div class="contact-info">
                         <h3>Technical Support</h3>
-                        <p>Email: support@quantumclockcompetition.com</p>
+                        <p>Email: support@pharaohsfragments.com</p>
                         <p>Available during competition hours</p>
                     </div>
                     
                     <div class="contact-info">
                         <h3>Registration Questions</h3>
-                        <p>Email: registration@quantumclockcompetition.com</p>
+                        <p>Email: registration@pharaohsfragments.com</p>
                         <p>Response within 24 hours</p>
                     </div>
                 </div>
@@ -1462,7 +1471,7 @@
     </div>
     
     <footer class="footer">
-        <p>Seekers for the Quantum Clock &copy; 2023 | An International Physics Competition</p>
+        <p>Pharaohs' Fragments &copy; 2023 | An International Physics Competition</p>
         <p>Organized by High School Students in Egypt</p>
     </footer>
 
@@ -1573,12 +1582,12 @@
         }
         
         function initForms() {
-            // Registration form
+            // Registrationform
             const registrationForm = document.getElementById('registration-form');
             if (registrationForm) {
                 registrationForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    showNotification('Thank you for registering for Seekers for the Quantum Clock! We will contact you with further details.');
+                    showNotification('Thank you for registering for Pharaohs\' Fragments! We will contact you with further details.');
                     this.reset();
                 });
             }
@@ -1592,20 +1601,6 @@
                     this.reset();
                 });
             }
-            
-            // Add focus effects to form inputs
-            const formInputs = document.querySelectorAll('.form-input, .form-textarea, .form-select');
-            formInputs.forEach(input => {
-                input.addEventListener('focus', function() {
-                    this.parentElement.classList.add('focused');
-                });
-                
-                input.addEventListener('blur', function() {
-                    if (this.value === '') {
-                        this.parentElement.classList.remove('focused');
-                    }
-                });
-            });
         }
         
         function initFAQ() {
@@ -1658,32 +1653,6 @@
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
-                }
-                
-                // Add parallax effect to background
-                const scrolled = window.pageYOffset;
-                const parallax = document.querySelector('.physics-bg');
-                if (parallax) {
-                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-                }
-            });
-        }
-        
-function initScrollEffects() {
-            const navbar = document.getElementById('navbar');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                
-                // Add parallax effect to background
-                const scrolled = window.pageYOffset;
-                const parallax = document.querySelector('.physics-bg');
-                if (parallax) {
-                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
                 }
             });
         }
