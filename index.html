@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharaohs' Fragments - Ancient Egyptian Physics Competition</title>
+    <title>International Pharaohs' Fragments League - Ancient Egyptian Physics League</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -42,7 +42,7 @@
             overflow-x: hidden;
         }
         
-        /* Fixed Background - Won't move with scroll */
+        /* Fixed Background */
         .physics-bg {
             position: fixed;
             top: 0;
@@ -70,18 +70,10 @@
         }
         
         @keyframes gradientOrbs {
-            0%, 100% { 
-                transform: translate(0, 0) rotate(0deg); 
-            }
-            25% { 
-                transform: translate(5%, -5%) rotate(90deg); 
-            }
-            50% { 
-                transform: translate(-3%, 3%) rotate(180deg); 
-            }
-            75% { 
-                transform: translate(3%, -3%) rotate(270deg); 
-            }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(5%, -5%) rotate(90deg); }
+            50% { transform: translate(-3%, 3%) rotate(180deg); }
+            75% { transform: translate(3%, -3%) rotate(270deg); }
         }
         
         .physics-bg::after {
@@ -92,7 +84,7 @@
             right: 0;
             bottom: 0;
             background-image: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800"><defs><pattern id="egyptPattern" patternUnits="userSpaceOnUse" width="250" height="200"><g opacity="0.4"><polygon points="50,20 20,70 80,70" fill="none" stroke="%23FFD700" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="85" stroke="%23FFD700" stroke-width="2"/><circle cx="130" cy="40" r="15" fill="none" stroke="%23CD7F32" stroke-width="2"/><path d="M130 55 L130 80 M120 70 L140 70" stroke="%23CD7F32" stroke-width="2.5"/><path d="M180 30 Q200 20 220 30 L220 60 Q200 70 180 60 Z" fill="none" stroke="%23FFD700" stroke-width="1.8"/><circle cx="200" cy="35" r="5" fill="%23FFD700"/><rect x="40" y="120" width="20" height="35" fill="none" stroke="%23CD7F32" stroke-width="2"/><polygon points="100,120 120,140 115,160 85,160 80,140" fill="none" stroke="%23FFD700" stroke-width="1.5"/><line x1="150" y1="120" x2="180" y2="120" stroke="%23CD7F32" stroke-width="2"/><line x1="165" y1="110" x2="165" y2="130" stroke="%23CD7F32" stroke-width="2"/><path d="M200 120 L220 115 L230 130 L220 145 L200 140 Z" fill="none" stroke="%23FFD700" stroke-width="1.5"/></g></pattern></defs><rect width="1000" height="800" fill="url(%23egyptPattern)"/></svg>');
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800"><defs><pattern id="egyptPattern" patternUnits="userSpaceOnUse" width="200" height="200"><g opacity="0.4"><polygon points="40,160 100,100 160,160" fill="none" stroke="%23FFD700" stroke-width="2"/><polygon points="60,140 100,110 140,140" fill="none" stroke="%23CD7F32" stroke-width="1.5"/><circle cx="100" cy="50" r="20" fill="none" stroke="%23FFD700" stroke-width="1.8"/><circle cx="100" cy="50" r="8" fill="none" stroke="%23CD7F32" stroke-width="1.5"/><circle cx="170" cy="50" r="15" fill="none" stroke="%23CD7F32" stroke-width="1.5"/><ellipse cx="170" cy="50" rx="10" ry="5" fill="none" stroke="%23FFD700" stroke-width="1"/><rect x="40" y="70" width="10" height="50" fill="none" stroke="%23CD7F32" stroke-width="1.5"/><rect x="150" y="70" width="10" height="50" fill="none" stroke="%23CD7F32" stroke-width="1.5"/><circle cx="50" cy="50" r="12" fill="none" stroke="%23FFD700" stroke-width="1.5"/><circle cx="50" cy="50" r="4" fill="%23FFD700"/><path d="M130 130 Q145 110 160 130 L160 150 Q145 160 130 150 Z" fill="none" stroke="%23CD7F32" stroke-width="1.2"/><line x1="30" y1="180" x2="170" y2="180" stroke="%23FFD700" stroke-width="1"/><line x1="30" y1="185" x2="170" y2="185" stroke="%23CD7F32" stroke-width="1"/><line x1="30" y1="190" x2="170" y2="190" stroke="%23FFD700" stroke-width="1"/><circle cx="30" cy="30" r="4" fill="none" stroke="%23FFD700" stroke-width="1"/><line x1="25" y1="30" x2="35" y2="30" stroke="%23FFD700" stroke-width="1"/><line x1="30" y1="25" x2="30" y2="35" stroke="%23FFD700" stroke-width="1"/><path d="M25 80 Q30 70 35 80 Q40 90 45 80" fill="none" stroke="%2300d4ff" stroke-width="1"/></g></pattern></defs><rect width="1000" height="800" fill="url(%23egyptPattern)"/></svg>');
             background-size: 1000px 800px;
             opacity: 0.12;
             animation: patternDrift 120s linear infinite;
@@ -103,7 +95,7 @@
             to { background-position: 1000px 800px; }
         }
         
-        /* Fixed Particles - Won't move with scroll */
+        /* Fixed Particles */
         .particles-container {
             position: fixed;
             top: 0;
@@ -279,6 +271,17 @@
             width: 100%;
         }
         
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.95rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .menu-toggle { 
                 display: block; 
@@ -306,9 +309,22 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 6rem 1rem 2rem;
+            padding: 6rem 2rem 3rem;
             position: relative;
             z-index: 1;
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 5rem 1.5rem 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 5rem 1rem 1.5rem;
+            }
         }
         
         .page {
@@ -335,16 +351,30 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 3rem 0;
+            padding: 3rem 0 4rem;
             position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 0 3rem;
+            }
         }
         
         .hero-pyramids {
             width: 120px;
             height: 120px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
             position: relative;
             animation: pyramidFloat 4s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-pyramids {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 2rem;
+            }
         }
         
         .hero-pyramid-main {
@@ -359,6 +389,14 @@
             z-index: 2;
         }
         
+        @media (max-width: 768px) {
+            .hero-pyramid-main {
+                width: 80px;
+                height: 70px;
+                left: 10px;
+            }
+        }
+        
         .hero-pyramid-left {
             width: 54px;
             height: 45px;
@@ -371,6 +409,14 @@
             z-index: 2;
         }
         
+        @media (max-width: 768px) {
+            .hero-pyramid-left {
+                width: 45px;
+                height: 37px;
+                left: -5px;
+            }
+        }
+        
         .hero-pyramid-right {
             width: 42px;
             height: 36px;
@@ -381,6 +427,13 @@
             right: 0;
             opacity: 0.7;
             z-index: 2;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-pyramid-right {
+                width: 35px;
+                height: 30px;
+            }
         }
         
         .pyramid-clock {
@@ -398,6 +451,13 @@
                 inset 0 0 15px rgba(0, 0, 0, 0.8);
             z-index: 1;
             animation: clockRotate 60s linear infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .pyramid-clock {
+                width: 70px;
+                height: 70px;
+            }
         }
         
         @keyframes clockRotate {
@@ -471,42 +531,66 @@
         }
         
         .hero-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 900;
             background: linear-gradient(135deg, var(--primary-gold), var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
         }
         
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             .hero-title { 
-                font-size: 3.5rem; 
+                font-size: 3.8rem; 
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
             }
         }
         
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
             font-style: italic;
         }
         
+        @media (max-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+        
         .hero-description {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-description {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
         }
         
         .cta-button {
             background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
             color: var(--dark-blue);
             border: none;
-            padding: 1rem 2rem;
-            font-size: 1rem;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
             font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
@@ -514,6 +598,7 @@
             text-transform: uppercase;
             position: relative;
             overflow: hidden;
+            letter-spacing: 0.5px;
         }
         
         .cta-button::before {
@@ -536,14 +621,21 @@
             left: 100%;
         }
         
+        @media (max-width: 768px) {
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+        
         /* Cards */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -564,31 +656,91 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         
+        @media (max-width: 768px) {
+            .glass-card {
+                padding: 1.8rem;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+        
         .card-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--primary-gold);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .card-title {
+                font-size: 1.6rem;
+                margin-bottom: 1.2rem;
+            }
         }
         
         .card-content {
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .card-content p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .card-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .card-content ul, .card-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .card-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .card-content {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
         }
         
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+        
+        @media (max-width: 1024px) {
+            .features {
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 3rem 0;
+            }
         }
         
         .feature-card {
             background: var(--glass-bg);
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 15px;
             text-align: center;
             border: 1px solid var(--glass-border);
@@ -617,46 +769,74 @@
             transform: scaleX(1);
         }
         
+        @media (max-width: 768px) {
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             color: var(--primary-gold);
+        }
+        
+        @media (max-width: 768px) {
+            .feature-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
         }
         
         .feature-title {
             color: var(--primary-gold);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
         }
         
+        @media (max-width: 768px) {
+            .feature-title {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+        }
+        
         .feature-description {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
         /* Forms */
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
         }
         
         .form-label {
             display: block;
             color: var(--primary-gold);
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
         
         .form-input,
         .form-select,
         .form-textarea {
             width: 100%;
-            padding: 0.8rem;
+            padding: 1rem 1.2rem;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid var(--glass-border);
-            border-radius: 8px;
+            border-radius: 10px;
             color: var(--text-primary);
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -667,20 +847,29 @@
         .form-textarea:focus {
             outline: none;
             border-color: var(--primary-gold);
-            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
             transform: translateY(-2px);
         }
         
+        @media (max-width: 768px) {
+            .form-input,
+            .form-select,
+            .form-textarea {
+                padding: 0.9rem 1rem;
+            }
+        }
+        
         .form-textarea {
-            min-height: 120px;
+            min-height: 150px;
             resize: vertical;
+            line-height: 1.5;
         }
         
         .submit-btn {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             color: white;
             border: none;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
@@ -690,6 +879,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            letter-spacing: 0.5px;
         }
         
         .submit-btn::before {
@@ -712,16 +902,30 @@
             left: 100%;
         }
         
+        @media (max-width: 768px) {
+            .submit-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+        
         /* Timeline */
         .timeline-item {
             background: rgba(255, 215, 0, 0.05);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 15px;
             border-left: 4px solid var(--primary-gold);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
         }
         
         .timeline-item::before {
@@ -747,21 +951,53 @@
         .timeline-date {
             color: var(--primary-gold);
             font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-date {
+                font-size: 1.1rem;
+            }
+        }
+        
+        .timeline-item p {
+            color: var(--text-secondary);
             font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item p {
+                font-size: 1rem;
+            }
         }
         
         /* Physics Domains */
         .physics-domains {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+        
+        @media (max-width: 1024px) {
+            .physics-domains {
+                gap: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .physics-domains {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
         }
         
         .domain-card {
             background: rgba(255, 215, 0, 0.05);
-            padding: 1.5rem;
+            padding: 2rem 1.8rem;
             border-radius: 15px;
             border: 1px solid rgba(255, 215, 0, 0.2);
             transition: all 0.3s ease;
@@ -790,35 +1026,56 @@
             transform: scaleX(1);
         }
         
+        @media (max-width: 768px) {
+            .domain-card {
+                padding: 1.8rem 1.5rem;
+            }
+        }
+        
         .domain-name {
             color: var(--primary-gold);
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
         }
         
-        .domain-artifact {
-            color: var(--accent-cyan);
-            font-style: italic;
-            margin-bottom: 0.5rem;
+        @media (max-width: 768px) {
+            .domain-name {
+                font-size: 1.2rem;
+            }
         }
         
         .domain-description {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
         /* Target Audience */
         .target-audience {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+        
+        @media (max-width: 1024px) {
+            .target-audience {
+                gap: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .target-audience {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
         }
         
         .audience-item {
             background: rgba(0, 212, 255, 0.05);
-            padding: 1.5rem;
+            padding: 2rem 1.8rem;
             border-radius: 15px;
             border: 1px solid rgba(0, 212, 255, 0.2);
             transition: all 0.3s ease;
@@ -828,20 +1085,35 @@
             transform: translateY(-5px);
         }
         
+        @media (max-width: 768px) {
+            .audience-item {
+                padding: 1.8rem 1.5rem;
+            }
+        }
+        
         .audience-item h4 {
             color: var(--accent-cyan);
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .audience-item h4 {
+                font-size: 1.2rem;
+            }
         }
         
         .audience-item p {
             color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
         /* Coming Soon */
         .coming-soon {
             text-align: center;
-            padding: 3rem;
+            padding: 4rem 3rem;
             background: rgba(255, 215, 0, 0.05);
             border-radius: 15px;
             border: 2px dashed rgba(255, 215, 0, 0.3);
@@ -852,21 +1124,41 @@
             transform: scale(1.02);
         }
         
+        @media (max-width: 768px) {
+            .coming-soon {
+                padding: 3rem 2rem;
+            }
+        }
+        
         .coming-soon h3 {
             color: var(--primary-gold);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .coming-soon h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
         }
         
         .coming-soon p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .coming-soon p {
+                font-size: 1.1rem;
+            }
         }
         
         /* Empty Section */
         .empty-section {
             text-align: center;
-            padding: 3rem;
+            padding: 4rem 3rem;
             background: rgba(255, 215, 0, 0.05);
             border-radius: 15px;
             border: 2px dashed rgba(255, 215, 0, 0.3);
@@ -877,15 +1169,35 @@
             transform: scale(1.02);
         }
         
+        @media (max-width: 768px) {
+            .empty-section {
+                padding: 3rem 2rem;
+            }
+        }
+        
         .empty-section h3 {
             color: var(--primary-gold);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .empty-section h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
         }
         
         .empty-section p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .empty-section p {
+                font-size: 1.1rem;
+            }
         }
         
         /* Contact Grid */
@@ -893,12 +1205,20 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
         }
         
         .contact-info {
             background: var(--glass-bg);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 15px;
             border: 1px solid var(--glass-border);
             transition: all 0.3s ease;
@@ -908,27 +1228,50 @@
             transform: translateY(-5px);
         }
         
+        @media (max-width: 768px) {
+            .contact-info {
+                padding: 1.8rem 1.5rem;
+            }
+        }
+        
         .contact-info h3 {
             color: var(--primary-gold);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-info h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
         }
         
         .contact-info p {
             color: var(--text-secondary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
         /* FAQ */
         .faq-item {
             background: rgba(255, 215, 0, 0.05);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 15px;
             border: 1px solid rgba(255, 215, 0, 0.2);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-item {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
         }
         
         .faq-item::before {
@@ -955,11 +1298,18 @@
         .faq-question {
             color: var(--primary-gold);
             font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-question {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
         }
         
         .faq-answer {
@@ -967,6 +1317,14 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-answer {
+                font-size: 1rem;
+            }
         }
         
         .faq-item.active .faq-answer {
@@ -974,7 +1332,7 @@
         }
         
         .faq-toggle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: transform 0.3s ease;
         }
         
@@ -985,8 +1343,8 @@
         /* Footer */
         .footer {
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
             border-top: 1px solid var(--glass-border);
             color: var(--text-secondary);
             position: relative;
@@ -1002,35 +1360,21 @@
             background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
         }
         
-        /* Responsive improvements */
         @media (max-width: 768px) {
-            .container {
-                padding: 5rem 1rem 1rem;
+            .footer {
+                padding: 2rem 1.5rem;
+                margin-top: 3rem;
             }
-            
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .glass-card {
-                padding: 1.5rem;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
-            
-            .physics-domains {
-                grid-template-columns: 1fr;
-            }
-            
-            .target-audience {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+        }
+        
+        .footer p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .footer p:last-child {
+            margin-bottom: 0;
         }
         
         /* Loading animation for better perceived performance */
@@ -1041,6 +1385,31 @@
         
         .loaded {
             opacity: 1;
+        }
+        
+        /* Custom spacing for large screens */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1300px;
+            }
+            
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .features {
+                gap: 3rem;
+            }
+            
+            .physics-domains {
+                gap: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1400px;
+            }
         }
     </style>
 </head>
@@ -1106,16 +1475,17 @@
                         <div class="clock-marker" style="transform: rotate(330deg);"></div>
                     </div>
                 </div>
-                <h1 class="hero-title">PHARAOHS' FRAGMENTS</h1>
-                <p class="hero-subtitle">An International Physics Competition</p>
-                <p class="hero-description">An international physics competition organized by high school students in Egypt, combining Egyptian adventure narrative with physics education. Participants solve story-driven physics puzzles in teams of three to collect ancient fragments.</p>
+                <h1 class="hero-title">International Pharaohs' Fragments League</h1>
+                <p class="hero-subtitle">An International Physics League</p>
+                <p class="hero-description">An international physics League organized by high school students in Egypt, combining Egyptian adventure narrative with physics education. Participants solve story-driven physics puzzles in teams of three to collect ancient fragments.</p>
                 <button class="cta-button" data-target="register">Register Now</button>
             </div>
             
             <div class="glass-card">
-                <h2 class="card-title"><i class="fas fa-info-circle"></i> About the Competition</h2>
+                <h2 class="card-title"><i class="fas fa-info-circle"></i> About the League</h2>
                 <div class="card-content">
-                    <p>Pharaohs' Fragments is a unique international physics competition that blends ancient Egyptian mythology with modern physics challenges. Teams of high school students from around the world will embark on a virtual journey through Egypt, solving physics puzzles to collect the ancient fragments and unlock their power.</p>
+                    <p>Pharaohs' Fragments is a unique international physics League that blends ancient Egyptian mythology with modern physics challenges. Teams of high school students from around the world will embark on a virtual journey through Egypt, solving physics puzzles to collect the ancient fragments and unlock their power.</p>
+                    
                 </div>
             </div>
             
@@ -1143,8 +1513,8 @@
             <div class="glass-card">
                 <h2 class="card-title"><i class="fas fa-landmark"></i> About Pharaohs' Fragments</h2>
                 <div class="card-content">
-                    <p>Pharaohs' Fragments is an innovative international physics competition created and organized by high school students in Egypt. Our mission is to make physics education engaging and accessible by combining it with the rich narrative of ancient Egyptian adventure.</p>
-                    <p>Participants form teams of three and work together to solve story-driven physics puzzles that are integrated into an immersive Egyptian mythology narrative. As teams progress through the competition, they collect six ancient fragments - powerful artifacts said to hold the key to understanding the universe's fundamental forces.</p>
+                    <p>Pharaohs' Fragments is an innovative international physics League created and organized by high school students in Egypt. Our mission is to make physics education engaging and accessible by combining it with the rich narrative of ancient Egyptian adventure.</p>
+                    <p>Participants form teams of up to three and work together to solve story-driven physics puzzles that are integrated into an immersive Egyptian mythology narrative. As teams progress through the League, they collect six ancient fragments - powerful artifacts said to hold the key to understanding the universe's fundamental forces.</p>
                     <p>This competition is designed to challenge students' understanding of physics concepts while fostering teamwork, problem-solving skills, and cultural appreciation. By blending education with entertainment, we aim to inspire the next generation of physicists and engineers.</p>
                 </div>
             </div>
@@ -1154,7 +1524,7 @@
                 <div class="card-content">
                     <p>The competition is divided into two main phases:</p>
                     <ul>
-                        <li><strong>Phase 1: Preparation (45 days)</strong> - Participants receive study materials and practice problems focusing on calculus and physics fundamentals.</li>
+                        <li><strong>Phase 1: Preparation </strong> - Participants receive study materials and practice problems focusing on calculus and physics fundamentals.</li>
                         <li><strong>Phase 2: Competition Rounds</strong> - Teams compete in two rounds of physics challenges integrated with the Egyptian adventure narrative to collect the fragments.</li>
                     </ul>
                     <p>All competition questions and challenges will be released during the competition timeline as teams progress through the adventure.</p>
@@ -1178,27 +1548,15 @@
                 <div class="card-content">
                     <div class="timeline-item">
                         <div class="timeline-date">December 20 - January 15</div>
-                        <p>Registration Period: Teams of 2-3 participants can register for the competition.</p>
+                        <p>Registration Period: Teams of 1-3 participants can register for the competition.</p>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-date">January 16 - February 29</div>
-                        <p>Phase 1: Preparation (45 days) - Calculus and physics fundamentals study materials and practice problems.</p>
+                        <div class="timeline-date">January 26 </div>
+                        <p>Phase 1: 30 problems (3 hours)</p>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-date">March 1 - March 7</div>
-                        <p>Round 1: 25 problems (3-4 hours) - First round of competition challenges.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">March 8 - March 14</div>
-                        <p>1-week break between rounds - Teams analyze their performance and prepare for the next round.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">March 15 - March 21</div>
-                        <p>Round 2: 15 problems (3 hours) - Final round of competition challenges.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">March 28</div>
-                        <p>Results Announcement and Awards Ceremony - Winners will be announced and prizes distributed.</p>
+                        <div class="timeline-date">February 3 </div>
+                        <p>Round 2: 40 problems (3 hours).</p>
                     </div>
                 </div>
             </div>
@@ -1213,30 +1571,32 @@
                 <div class="physics-domains">
                     <div class="domain-card">
                         <h3 class="domain-name">Mechanics</h3>
+                        <div class="domain-artifact">Seal of Akhenaten</div>
                         <p class="domain-description">Solve problems related to motion, forces, energy, and momentum to unlock the secrets of the Seal of Akhenaten.</p>
                     </div>
                     <div class="domain-card">
                         <h3 class="domain-name">Optics</h3>
+                        <div class="domain-artifact">Eye of Horus</div>
                         <p class="domain-description">Master light, reflection, refraction, and lenses to decipher the mysteries of the Eye of Horus.</p>
                     </div>
                     <div class="domain-card">
                         <h3 class="domain-name">Modern Physics</h3>
-                        
+                        <div class="domain-artifact">Anubis' Jewel</div>
                         <p class="domain-description">Explore quantum mechanics, relativity, and nuclear physics to claim Anubis' Jewel.</p>
                     </div>
                     <div class="domain-card">
                         <h3 class="domain-name">Thermodynamics</h3>
-                      
+                        <div class="domain-artifact">Ma'at's Crystal</div>
                         <p class="domain-description">Understand heat, energy transfer, and entropy to balance Ma'at's Crystal.</p>
                     </div>
                     <div class="domain-card">
                         <h3 class="domain-name">Waves</h3>
-                     
+                        <div class="domain-artifact">Khufu's Arrow</div>
                         <p class="domain-description">Navigate sound, light waves, and interference to aim Khufu's Arrow true.</p>
                     </div>
                     <div class="domain-card">
                         <h3 class="domain-name">Electromagnetism</h3>
-                      
+                        <div class="domain-artifact">Ra's Stone</div>
                         <p class="domain-description">Harness electric and magnetic fields to power Ra's Stone.</p>
                     </div>
                 </div>
@@ -1252,10 +1612,11 @@
                 <div class="target-audience">
                     <div class="audience-item">
                         <h4>High School Students</h4>
-                
+                        <p>High schoolers.</p>
+                    </div>
                     <div class="audience-item">
                         <h4>Team Participation</h4>
-                        <p>Teams of 2-3 participants working together to solve challenges.</p>
+                        <p>Teams of 1-3 participants working together to solve challenges.</p>
                     </div>
                     <div class="audience-item">
                         <h4>International Participation</h4>
@@ -1267,7 +1628,13 @@
                     </div>
                 </div>
             </div>
-  
+            
+            <div class="glass-card">
+                <h2 class="card-title"><i class="fas fa-chart-line"></i> Expected Participation</h2>
+                <div class="card-content">
+                    <p>This diverse participation will create a vibrant international community of young physicists exploring the intersection of science and ancient Egyptian culture.</p>
+                </div>
+            </div>
         </section>
         
         <!-- Questions Page -->
@@ -1287,7 +1654,7 @@
             <div class="glass-card">
                 <h2 class="card-title"><i class="fas fa-user-plus"></i> Registration</h2>
                 <div class="card-content">
-                    <p>Registration for Pharaohs' Fragments is open from December 20 to January 15. Form your team of 2-3 participants and register using the form below.</p>
+                    <p>Registration for Pharaohs' Fragments is open from December 2 to January 25. Form your team of 1-3 participants and register using the form below.</p>
                     
                     <form id="registration-form">
                         <div class="form-group">
@@ -1348,7 +1715,7 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>The competition is open to high school students aged 15-18 from anywhere in the world. Participants must form teams of 2-3 students.</p>
+                        <p>The competition is open to high school students from anywhere in the world. Participants must form teams of 1-3 students.</p>
                     </div>
                 </div>
                 
@@ -1413,11 +1780,7 @@
                     <div class="contact-info">
                         <h3>General Inquiries</h3>
                         <p>Email: pharaohsfragments.info@gmail.com</p>
-                        <p>Phone: +20 1013889738</p>
                     </div>
-                    
-                   
-                
                 <div class="glass-card" style="margin-top: 2rem;">
                     <h3 class="card-title">Send Us a Message</h3>
                     <form id="contact-form">
@@ -1449,7 +1812,7 @@
     </div>
     
     <footer class="footer">
-        <p>Pharaohs' Fragments &copy; 2023 | An International Physics Competition</p>
+        <p>Pharaohs' Fragments &copy; 2025 | An International Physics League</p>
         <p>Organized by High School Students in Egypt</p>
     </footer>
 
