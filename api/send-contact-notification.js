@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || 're_WzHopHpy_NHPZm7mG5cjxqW5hb7geVQxC');
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'pharaohsfragments.info@gmail.com';
 
 export default async function handler(req, res) {
