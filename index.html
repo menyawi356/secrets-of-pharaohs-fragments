@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Add this in the head section after other stylesheets -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary-gold: #FFD700;
@@ -2045,9 +2046,7 @@
         console.log('Confirmation email would be sent to:', participantData.leader_email);
         console.log('Confirmation token:', participantData.confirmation_token);
         
-        // In production, you would use a service like Resend, SendGrid, or Supabase Edge Functions
-        // Example with a serverless function:
-        /*
+
         try {
             const response = await fetch('/api/send-confirmation-email', {
                 method: 'POST',
@@ -2059,7 +2058,7 @@
             console.error('Email sending error:', error);
             return false;
         }
-        */
+        
         
         return true;
     }
@@ -2071,8 +2070,7 @@
         console.log('From:', contactData.email);
         console.log('Subject:', contactData.subject);
         
-        // In production:
-        /*
+
         try {
             const response = await fetch('/api/send-contact-notification', {
                 method: 'POST',
@@ -2084,7 +2082,7 @@
             console.error('Notification email error:', error);
             return false;
         }
-        */
+        
         
         return true;
     }
