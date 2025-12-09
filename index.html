@@ -1812,226 +1812,374 @@
         <p>Pharaohs' Fragments &copy; 2025 | An International Physics League</p>
         <p>Organized by High School Students in Egypt</p>
     </footer>
-
-    <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all components
-            initNavigation();
-            initParticles();
-            initForms();
-            initFAQ();
-            initClock();
-            initScrollEffects();
-            
-            // Mark page as loaded for smooth transitions
-            document.body.classList.add('loaded');
+<script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Supabase client
+        const supabaseUrl = 'https://YOUR_SUPABASE_PROJECT_ID.supabase.co';
+        const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY';
+        
+        // In production, these will be set as environment variables
+        // For now, we'll use placeholders that will be replaced by Vercel
+        const supabase = window.supabase ? 
+            window.supabase.createClient(supabaseUrl, supabaseAnonKey) : 
+            { 
+                from: () => ({ 
+                    insert: () => Promise.resolve({ error: null }), 
+                    select: () => Promise.resolve({ error: null }) 
+                }) 
+            };
+        
+        // Initialize all components
+        initNavigation();
+        initParticles();
+        initForms(supabase);
+        initFAQ();
+        initClock();
+        initScrollEffects();
+        
+        // Mark page as loaded for smooth transitions
+        document.body.classList.add('loaded');
+    });
+    
+    function initNavigation() {
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const navLinksList = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            this.classList.toggle('active');
         });
         
-        function initNavigation() {
-            const menuToggle = document.getElementById('menu-toggle');
-            const navLinks = document.getElementById('nav-links');
-            const navLinksList = document.querySelectorAll('.nav-link');
-            const pages = document.querySelectorAll('.page');
-            
-            // Mobile menu toggle
-            menuToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                this.classList.toggle('active');
-            });
-            
-            // Page navigation
-            navLinksList.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = this.getAttribute('data-target');
-                    
-                    // Update active nav link
-                    navLinksList.forEach(navLink => navLink.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Show target page with smooth transition
-                    pages.forEach(page => {
-                        page.classList.remove('active');
-                        if (page.id === target) {
-                            setTimeout(() => {
-                                page.classList.add('active');
-                            }, 50);
-                        }
-                    });
-                    
-                    // Close mobile menu if open
-                    navLinks.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                    
-                    // Scroll to top
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            });
-            
-            // CTA button navigation
-            const ctaButton = document.querySelector('.cta-button');
-            if (ctaButton) {
-                ctaButton.addEventListener('click', function() {
-                    const target = this.getAttribute('data-target');
-                    
-                    // Update active nav link
-                    navLinksList.forEach(navLink => navLink.classList.remove('active'));
-                    document.querySelector(`[data-target="${target}"]`).classList.add('active');
-                    
-                    // Show target page
-                    pages.forEach(page => {
-                        page.classList.remove('active');
-                        if (page.id === target) {
-                            setTimeout(() => {
-                                page.classList.add('active');
-                            }, 50);
-                        }
-                    });
-                    
-                    // Scroll to top
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-        }
-        
-        function initParticles() {
-            const container = document.getElementById('particles-container');
-            const particleCount = 15; // Reduced for better performance
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
+        // Page navigation
+        navLinksList.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = this.getAttribute('data-target');
                 
-                // Random properties
-                const size = Math.random() * 4 + 2;
-                const left = Math.random() * 100;
-                const delay = Math.random() * 20;
-                const duration = 20 + Math.random() * 10;
+                // Update active nav link
+                navLinksList.forEach(navLink => navLink.classList.remove('active'));
+                this.classList.add('active');
                 
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${left}%`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.animationDuration = `${duration}s`;
-                
-                container.appendChild(particle);
-            }
-        }
-        
-        function initForms() {
-            // Registrationform
-            const registrationForm = document.getElementById('registration-form');
-            if (registrationForm) {
-                registrationForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    showNotification('Thank you for registering for Pharaohs\' Fragments! We will contact you with further details.');
-                    this.reset();
-                });
-            }
-            
-            // Contact form
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    showNotification('Thank you for your message! We will get back to you soon.');
-                    this.reset();
-                });
-            }
-        }
-        
-        function initFAQ() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const isActive = this.classList.contains('active');
-                    
-                    // Close all FAQ items
-                    faqItems.forEach(faq => faq.classList.remove('active'));
-                    
-                    // Open clicked item if it wasn't active
-                    if (!isActive) {
-                        this.classList.add('active');
+                // Show target page with smooth transition
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === target) {
+                        setTimeout(() => {
+                            page.classList.add('active');
+                        }, 50);
                     }
                 });
+                
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // CTA button navigation
+        const ctaButton = document.querySelector('.cta-button');
+        if (ctaButton) {
+            ctaButton.addEventListener('click', function() {
+                const target = this.getAttribute('data-target');
+                
+                // Update active nav link
+                navLinksList.forEach(navLink => navLink.classList.remove('active'));
+                document.querySelector(`[data-target="${target}"]`).classList.add('active');
+                
+                // Show target page
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === target) {
+                        setTimeout(() => {
+                            page.classList.add('active');
+                        }, 50);
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
+    }
+    
+    function initParticles() {
+        const container = document.getElementById('particles-container');
+        const particleCount = 15; // Reduced for better performance
         
-        function initClock() {
-            function updateClock() {
-                const now = new Date();
-                const hours = now.getHours() % 12;
-                const minutes = now.getMinutes();
-                const seconds = now.getSeconds();
-                
-                const hourHand = document.querySelector('.clock-hour');
-                const minuteHand = document.querySelector('.clock-minute');
-                const secondHand = document.querySelector('.clock-second');
-                
-                const hourDeg = (hours * 30) + (minutes * 0.5);
-                const minuteDeg = (minutes * 6) + (seconds * 0.1);
-                const secondDeg = seconds * 6;
-                
-                if (hourHand) hourHand.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
-                if (minuteHand) minuteHand.style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
-                if (secondHand) secondHand.style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
-            }
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
             
-            // Update clock immediately and then every second
-            updateClock();
-            setInterval(updateClock, 1000);
+            // Random properties
+            const size = Math.random() * 4 + 2;
+            const left = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const duration = 20 + Math.random() * 10;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${left}%`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
+            
+            container.appendChild(particle);
         }
-        
-        function initScrollEffects() {
-            const navbar = document.getElementById('navbar');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
+    }
+    
+    function initForms(supabase) {
+        // Registration form
+        const registrationForm = document.getElementById('registration-form');
+        if (registrationForm) {
+            registrationForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Registering...';
+                submitBtn.disabled = true;
+                
+                // Collect form data
+                const formData = {
+                    team_name: document.getElementById('team-name').value,
+                    leader_name: document.getElementById('team-leader').value,
+                    leader_email: document.getElementById('leader-email').value,
+                    leader_school: document.getElementById('leader-school').value,
+                    leader_country: document.getElementById('leader-country').value,
+                    member2_name: document.getElementById('team-member-2').value,
+                    member2_email: document.getElementById('member2-email').value,
+                    member3_name: document.getElementById('team-member-3').value || null,
+                    member3_email: document.getElementById('member3-email').value || null,
+                    confirmation_token: generateConfirmationToken()
+                };
+                
+                try {
+                    // Save to Supabase
+                    const { data, error } = await supabase
+                        .from('participants')
+                        .insert([formData]);
+                    
+                    if (error) throw error;
+                    
+                    // Send confirmation email (this would be handled by a backend function)
+                    // For now, we'll simulate it
+                    await sendConfirmationEmail(formData);
+                    
+                    showNotification('Registration successful! A confirmation email has been sent to ' + formData.leader_email);
+                    this.reset();
+                    
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    showNotification('Registration failed. Please try again or contact us directly.');
+                } finally {
+                    // Reset button state
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
                 }
             });
         }
         
-        function showNotification(message) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: var(--primary-gold);
-                color: var(--dark-blue);
-                padding: 1rem 1.5rem;
-                border-radius: 8px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                z-index: 10000;
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-                max-width: 300px;
-                font-weight: 600;
-            `;
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 10);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
+        // Contact form
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // Collect form data
+                const formData = {
+                    name: document.getElementById('contact-name').value,
+                    email: document.getElementById('contact-email').value,
+                    subject: document.getElementById('contact-subject').value,
+                    message: document.getElementById('contact-message').value
+                };
+                
+                try {
+                    // Save to Supabase
+                    const { data, error } = await supabase
+                        .from('contact_messages')
+                        .insert([formData]);
+                    
+                    if (error) throw error;
+                    
+                    // Send email notification to admin
+                    await sendContactNotificationEmail(formData);
+                    
+                    showNotification('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                    
+                } catch (error) {
+                    console.error('Contact form error:', error);
+                    showNotification('Message sending failed. Please try again or email us directly.');
+                } finally {
+                    // Reset button state
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
         }
-    </script>
+    }
+    
+    function generateConfirmationToken() {
+        return Array.from(crypto.getRandomValues(new Uint8Array(16)))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    }
+    
+    async function sendConfirmationEmail(participantData) {
+        // In production, this would call a serverless function
+        // For now, we'll log it and use a placeholder
+        
+        console.log('Confirmation email would be sent to:', participantData.leader_email);
+        console.log('Confirmation token:', participantData.confirmation_token);
+        
+        // In production, you would use a service like Resend, SendGrid, or Supabase Edge Functions
+        // Example with a serverless function:
+        /*
+        try {
+            const response = await fetch('/api/send-confirmation-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(participantData)
+            });
+            return response.ok;
+        } catch (error) {
+            console.error('Email sending error:', error);
+            return false;
+        }
+        */
+        
+        return true;
+    }
+    
+    async function sendContactNotificationEmail(contactData) {
+        // In production, this would call a serverless function
+        
+        console.log('Contact notification would be sent to admin');
+        console.log('From:', contactData.email);
+        console.log('Subject:', contactData.subject);
+        
+        // In production:
+        /*
+        try {
+            const response = await fetch('/api/send-contact-notification', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(contactData)
+            });
+            return response.ok;
+        } catch (error) {
+            console.error('Notification email error:', error);
+            return false;
+        }
+        */
+        
+        return true;
+    }
+    
+    function initFAQ() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const isActive = this.classList.contains('active');
+                
+                // Close all FAQ items
+                faqItems.forEach(faq => faq.classList.remove('active'));
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    this.classList.add('active');
+                }
+            });
+        });
+    }
+    
+    function initClock() {
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours() % 12;
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            const hourHand = document.querySelector('.clock-hour');
+            const minuteHand = document.querySelector('.clock-minute');
+            const secondHand = document.querySelector('.clock-second');
+            
+            const hourDeg = (hours * 30) + (minutes * 0.5);
+            const minuteDeg = (minutes * 6) + (seconds * 0.1);
+            const secondDeg = seconds * 6;
+            
+            if (hourHand) hourHand.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+            if (minuteHand) minuteHand.style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
+            if (secondHand) secondHand.style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+        }
+        
+        // Update clock immediately and then every second
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
+    
+    function initScrollEffects() {
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
+    
+    function showNotification(message) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--primary-gold);
+            color: var(--dark-blue);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            max-width: 300px;
+            font-weight: 600;
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 10);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
+</script>
 </body>
 </html>
