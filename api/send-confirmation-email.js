@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     const { participantData } = req.body;
     
     const { data, error } = await resend.emails.send({
-      from: 'Pharaohs\' Fragments <noreply@yourdomain.com>',
+      from: 'Pharaohs\' Fragments <pharaohsfragments.info@gmail.com>',
       to: participantData.leader_email,
       subject: 'Registration Confirmation - Pharaohs\' Fragments',
       html: `

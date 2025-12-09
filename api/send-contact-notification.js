@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'your-email@example.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'pharaohsfragments.info@gmail.com';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     
     // Send to admin
     const { data, error } = await resend.emails.send({
-      from: 'Website Contact <noreply@yourdomain.com>',
+      from: 'Website Contact <pharaohsfragments.info@gmail.com>',
       to: ADMIN_EMAIL,
       subject: `New Contact: ${contactData.subject}`,
       html: `
