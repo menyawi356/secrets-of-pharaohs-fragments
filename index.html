@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Add this code after the <title> tag in your <head> section -->
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Pharaohs' Fragments League - Ancient Egyptian Physics League</title>
+    
     <!-- Favicon for browser tabs -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -21,7 +23,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="International Pharaohs' Fragments League">
     <meta name="twitter:description" content="An international physics league blending ancient Egyptian mythology with modern physics challenges.">
-    <meta name="twitter:image" content="https://yourwebsite.com/twitter-image.jpg">
+    <meta name="twitter:image" content="https://pharaohleague.org/unnamed.jpg">
 
     <!-- Essential meta tags for SEO -->
     <meta name="description" content="Pharaohs' Fragments is an international physics league for high school students, combining Egyptian adventure narrative with physics education. Solve story-driven physics puzzles in teams of three.">
@@ -29,9 +31,9 @@
     <meta name="author" content="Pharaohs' Fragments League">
     <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Add this in the head section after other stylesheets -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
+        /* ALL YOUR EXISTING CSS CODE - KEEP THIS EXACTLY AS IS */
         :root {
             --primary-gold: #FFD700;
             --secondary-gold: #FFA500;
@@ -1836,15 +1838,22 @@
         <p>Pharaohs' Fragments &copy; 2025 | An International Physics League</p>
         <p>Organized by High School Students in Egypt</p>
     </footer>
+
 <script>
-    // Wait for DOM to be fully loaded
+    // ========== CONFIGURATION SECTION ==========
+    // SET THESE URLs AFTER DEPLOYING TO VERCEL
+    const API_URLS = {
+        // After deploying to Vercel, replace these with your actual Vercel URLs
+        SEND_CONFIRMATION_EMAIL: 'https://pharaoh-api.vercel.app/api/send-confirmation-email.js',
+        SEND_CONTACT_NOTIFICATION: 'https://pharaoh-api.vercel.app/api/send-contact-email.js'
+    };
+    
+    // ========== MAIN INITIALIZATION ==========
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize Supabase client
         const supabaseUrl = 'https://latmzqzchumysoeomlgw.supabase.co';
         const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhdG16cXpjaHVteXNvZW9tbGd3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUyNzY5NjUsImV4cCI6MjA4MDg1Mjk2NX0.Ye73u8CCCGO5sqCFSN3j8bD8WhvWl-24fk-COXrH3iQ';
         
-        // In production, these will be set as environment variables
-        // For now, we'll use placeholders that will be replaced by Vercel
         const supabase = window.supabase ? 
             window.supabase.createClient(supabaseUrl, supabaseAnonKey) : 
             { 
@@ -1862,10 +1871,185 @@
         initClock();
         initScrollEffects();
         
-        // Mark page as loaded for smooth transitions
         document.body.classList.add('loaded');
     });
     
+    // ========== EMAIL FUNCTIONS ==========
+    async function sendConfirmationEmail(participantData) {
+        try {
+            console.log('Attempting to send confirmation email to:', participantData.leader_email);
+            
+            // Use the configurable API URL
+            const response = await fetch(API_URLS.SEND_CONFIRMATION_EMAIL, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ participantData: participantData })
+            });
+            
+            const result = await response.json();
+            
+            if (!response.ok) {
+                console.error('API Error response:', result);
+                throw new Error(result.error || 'Failed to send email');
+            }
+            
+            console.log('Email API response:', result);
+            return result.success;
+        } catch (error) {
+            console.error('Email sending error:', error);
+            // Fallback: Registration will still work without email
+            console.log('Registration saved to Supabase (email failed):', participantData);
+            return false;
+        }
+    }
+    
+    async function sendContactNotificationEmail(contactData) {
+        try {
+            console.log('Sending contact notification for:', contactData.email);
+            
+            // Use the configurable API URL
+            const response = await fetch(API_URLS.SEND_CONTACT_NOTIFICATION, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ contactData: contactData })
+            });
+            
+            const result = await response.json();
+            
+            if (!response.ok) {
+                console.error('Contact API Error:', result);
+                throw new Error(result.error || 'Failed to send contact notification');
+            }
+            
+            console.log('Contact notification sent:', result);
+            return result.success;
+        } catch (error) {
+            console.error('Contact notification error:', error);
+            return false;
+        }
+    }
+    
+    // ========== FORM FUNCTIONS ==========
+    function initForms(supabase) {
+        // Registration form
+        const registrationForm = document.getElementById('registration-form');
+        if (registrationForm) {
+            registrationForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Registering...';
+                submitBtn.disabled = true;
+                
+                // Collect form data
+                const formData = {
+                    team_name: document.getElementById('team-name').value,
+                    leader_name: document.getElementById('team-leader').value,
+                    leader_email: document.getElementById('leader-email').value,
+                    leader_school: document.getElementById('leader-school').value,
+                    leader_country: document.getElementById('leader-country').value,
+                    member2_name: document.getElementById('team-member-2').value,
+                    member2_email: document.getElementById('member2-email').value,
+                    member3_name: document.getElementById('team-member-3').value || null,
+                    member3_email: document.getElementById('member3-email').value || null,
+                    confirmation_token: generateConfirmationToken()
+                };
+                
+                try {
+                    // 1. Save to Supabase (always works)
+                    const { data, error } = await supabase
+                        .from('participants')
+                        .insert([formData]);
+                    
+                    if (error) throw error;
+                    
+                    // 2. Try to send email (optional - works if Vercel is set up)
+                    try {
+                        await sendConfirmationEmail(formData);
+                        showNotification(`✅ Registration successful! Confirmation email sent to ${formData.leader_email}`);
+                    } catch (emailError) {
+                        // Email failed but registration was saved to Supabase
+                        showNotification(`✅ Registration saved! Team "${formData.team_name}" has been registered.`);
+                    }
+                    
+                    this.reset();
+                    
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    showNotification('⚠️ Registration failed. Please try again or email us directly.');
+                } finally {
+                    // Reset button state
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+        
+        // Contact form
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // Collect form data
+                const formData = {
+                    name: document.getElementById('contact-name').value,
+                    email: document.getElementById('contact-email').value,
+                    subject: document.getElementById('contact-subject').value,
+                    message: document.getElementById('contact-message').value
+                };
+                
+                try {
+                    // 1. Save to Supabase
+                    const { data, error } = await supabase
+                        .from('contact_messages')
+                        .insert([formData]);
+                    
+                    if (error) throw error;
+                    
+                    // 2. Try to send notification (optional)
+                    try {
+                        await sendContactNotificationEmail(formData);
+                        showNotification('✅ Message sent! We will get back to you soon.');
+                    } catch (emailError) {
+                        showNotification('✅ Message saved! We will contact you soon.');
+                    }
+                    
+                    this.reset();
+                    
+                } catch (error) {
+                    console.error('Contact form error:', error);
+                    showNotification('⚠️ Message sending failed. Please email us directly.');
+                } finally {
+                    // Reset button state
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+    }
+    
+    function generateConfirmationToken() {
+        return Array.from(crypto.getRandomValues(new Uint8Array(16)))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    }
+    
+    // ========== OTHER FUNCTIONS (keep as is) ==========
     function initNavigation() {
         const menuToggle = document.getElementById('menu-toggle');
         const navLinks = document.getElementById('nav-links');
@@ -1935,7 +2119,7 @@
     
     function initParticles() {
         const container = document.getElementById('particles-container');
-        const particleCount = 15; // Reduced for better performance
+        const particleCount = 15;
         
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
@@ -1956,169 +2140,6 @@
             container.appendChild(particle);
         }
     }
-    
-    function initForms(supabase) {
-        // Registration form
-        const registrationForm = document.getElementById('registration-form');
-        if (registrationForm) {
-            registrationForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // Show loading state
-                const submitBtn = this.querySelector('.submit-btn');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Registering...';
-                submitBtn.disabled = true;
-                
-                // Collect form data
-                const formData = {
-                    team_name: document.getElementById('team-name').value,
-                    leader_name: document.getElementById('team-leader').value,
-                    leader_email: document.getElementById('leader-email').value,
-                    leader_school: document.getElementById('leader-school').value,
-                    leader_country: document.getElementById('leader-country').value,
-                    member2_name: document.getElementById('team-member-2').value,
-                    member2_email: document.getElementById('member2-email').value,
-                    member3_name: document.getElementById('team-member-3').value || null,
-                    member3_email: document.getElementById('member3-email').value || null,
-                    confirmation_token: generateConfirmationToken()
-                };
-                
-                try {
-                    // Save to Supabase
-                    const { data, error } = await supabase
-                        .from('participants')
-                        .insert([formData]);
-                    
-                    if (error) throw error;
-                    
-                    // Send confirmation email (this would be handled by a backend function)
-                    // For now, we'll simulate it
-                    await sendConfirmationEmail(formData);
-                    
-                    showNotification('Registration successful! A confirmation email has been sent to ' + formData.leader_email);
-                    this.reset();
-                    
-                } catch (error) {
-                    console.error('Registration error:', error);
-                    showNotification('Registration failed. Please try again or contact us directly.');
-                } finally {
-                    // Reset button state
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }
-            });
-        }
-        
-        // Contact form
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // Show loading state
-                const submitBtn = this.querySelector('.submit-btn');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
-                
-                // Collect form data
-                const formData = {
-                    name: document.getElementById('contact-name').value,
-                    email: document.getElementById('contact-email').value,
-                    subject: document.getElementById('contact-subject').value,
-                    message: document.getElementById('contact-message').value
-                };
-                
-                try {
-                    // Save to Supabase
-                    const { data, error } = await supabase
-                        .from('contact_messages')
-                        .insert([formData]);
-                    
-                    if (error) throw error;
-                    
-                    // Send email notification to admin
-                    await sendContactNotificationEmail(formData);
-                    
-                    showNotification('Thank you for your message! We will get back to you soon.');
-                    this.reset();
-                    
-                } catch (error) {
-                    console.error('Contact form error:', error);
-                    showNotification('Message sending failed. Please try again or email us directly.');
-                } finally {
-                    // Reset button state
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }
-            });
-        }
-    }
-    
-    function generateConfirmationToken() {
-        return Array.from(crypto.getRandomValues(new Uint8Array(16)))
-            .map(b => b.toString(16).padStart(2, '0'))
-            .join('');
-    }
-    
- async function sendConfirmationEmail(participantData) {
-    try {
-        console.log('Attempting to send confirmation email to:', participantData.leader_email);
-        
-        const response = await fetch('/api/send-confirmation-email', {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({ participantData: participantData })
-        });
-        
-        const result = await response.json();
-        
-        if (!response.ok) {
-            console.error('API Error response:', result);
-            throw new Error(result.error || 'Failed to send email');
-        }
-        
-        console.log('Email API response:', result);
-        return result.success;
-    } catch (error) {
-        console.error('Email sending error:', error);
-        // Fallback: log the registration instead of failing
-        console.log('Registration would have been:', participantData);
-        return false; // Return false but don't block registration
-    }
-}
-    
-  async function sendContactNotificationEmail(contactData) {
-    try {
-        console.log('Sending contact notification for:', contactData.email);
-        
-        const response = await fetch('/api/send-contact-notification', {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({ contactData: contactData })
-        });
-        
-        const result = await response.json();
-        
-        if (!response.ok) {
-            console.error('Contact API Error:', result);
-            throw new Error(result.error || 'Failed to send contact notification');
-        }
-        
-        console.log('Contact notification sent:', result);
-        return result.success;
-    } catch (error) {
-        console.error('Contact notification error:', error);
-        return false;
-    }
-}
     
     function initFAQ() {
         const faqItems = document.querySelectorAll('.faq-item');
