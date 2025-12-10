@@ -2062,53 +2062,63 @@
             .join('');
     }
     
-    async function sendConfirmationEmail(participantData) {
-        // In production, this would call a serverless function
-        // For now, we'll log it and use a placeholder
+ async function sendConfirmationEmail(participantData) {
+    try {
+        console.log('Attempting to send confirmation email to:', participantData.leader_email);
         
-        console.log('Confirmation email would be sent to:', participantData.leader_email);
-        console.log('Confirmation token:', participantData.confirmation_token);
+        const response = await fetch('/api/send-confirmation-email', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ participantData: participantData })
+        });
         
-
-        try {
-            const response = await fetch('/api/send-confirmation-email', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(participantData)
-            });
-            return response.ok;
-        } catch (error) {
-            console.error('Email sending error:', error);
-            return false;
+        const result = await response.json();
+        
+        if (!response.ok) {
+            console.error('API Error response:', result);
+            throw new Error(result.error || 'Failed to send email');
         }
         
-        
-        return true;
+        console.log('Email API response:', result);
+        return result.success;
+    } catch (error) {
+        console.error('Email sending error:', error);
+        // Fallback: log the registration instead of failing
+        console.log('Registration would have been:', participantData);
+        return false; // Return false but don't block registration
     }
+}
     
-    async function sendContactNotificationEmail(contactData) {
-        // In production, this would call a serverless function
+  async function sendContactNotificationEmail(contactData) {
+    try {
+        console.log('Sending contact notification for:', contactData.email);
         
-        console.log('Contact notification would be sent to admin');
-        console.log('From:', contactData.email);
-        console.log('Subject:', contactData.subject);
+        const response = await fetch('/api/send-contact-notification', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ contactData: contactData })
+        });
         
-
-        try {
-            const response = await fetch('/api/send-contact-notification', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(contactData)
-            });
-            return response.ok;
-        } catch (error) {
-            console.error('Notification email error:', error);
-            return false;
+        const result = await response.json();
+        
+        if (!response.ok) {
+            console.error('Contact API Error:', result);
+            throw new Error(result.error || 'Failed to send contact notification');
         }
         
-        
-        return true;
+        console.log('Contact notification sent:', result);
+        return result.success;
+    } catch (error) {
+        console.error('Contact notification error:', error);
+        return false;
     }
+}
     
     function initFAQ() {
         const faqItems = document.querySelectorAll('.faq-item');
