@@ -27,7 +27,7 @@ export default function PartnersAndPrizes() {
 
         {/* Prize pool banner */}
         <div className="prize-pool-banner">
-          <div className="prize-pool-amount">$3,000+</div>
+          <div className="prize-pool-amount">$550,000+</div>
           <div className="prize-pool-label">
             <T en="Total Prize Pool" ar="إجمالي قيمة الجوائز" />
           </div>
