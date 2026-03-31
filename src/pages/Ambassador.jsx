@@ -448,23 +448,9 @@ export default function Ambassador() {
           <div style={{ fontFamily: 'Cinzel,serif', color: 'var(--gold)', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.3rem' }}>
             {p('Top Ambassador Prize', 'جائزة أفضل سفير')}
           </div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', margin: 0, marginBottom: '0.5rem' }}>
-            {p('The ambassador with the most referrals at registration close (May 31) wins a 1.5-year subscription to The Physics Classroom — covering Physics, Chemistry, and Math — and gets featured on the website.', 'يفوز السفير الأكثر إحالات في نهاية التسجيل (31 مايو) باشتراك لمدة سنة ونصف في The Physics Classroom يشمل الفيزياء والكيمياء والرياضيات، ويظهر اسمه على الموقع.')}
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', margin: 0 }}>
+            {p('The ambassador with the most referrals at registration close (May 31) wins an exclusive IPhFL prize and gets featured on the website.', 'يفوز السفير الأكثر إحالات في نهاية التسجيل (31 مايو) بجائزة حصرية ويظهر اسمه على الموقع.')}
           </p>
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginTop: '0.6rem' }}>
-            {['Physics', 'Chemistry', 'Math'].map(subject => (
-              <span key={subject} style={{
-                background: 'rgba(212,175,55,0.13)', border: '1px solid rgba(212,175,55,0.4)',
-                color: 'var(--gold)', borderRadius: '20px', padding: '0.18rem 0.7rem',
-                fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.4px',
-              }}>{subject}</span>
-            ))}
-            <span style={{
-              background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)',
-              color: 'var(--text-muted)', borderRadius: '20px', padding: '0.18rem 0.7rem',
-              fontSize: '0.75rem', fontWeight: 600,
-            }}>1.5 Years</span>
-          </div>
         </div>
       </div>
 

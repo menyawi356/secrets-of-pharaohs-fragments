@@ -11,31 +11,19 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero-pyramids">
-          <div className="hero-pyramid-main"></div>
-          <div className="hero-pyramid-left"></div>
-          <div className="hero-pyramid-right"></div>
-          <div className="pyramid-clock">
-            <div className="clock-markers">
-              <div className="clock-marker" style={{ transform: 'rotate(0deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(30deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(60deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(90deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(120deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(150deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(180deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(210deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(240deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(270deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(300deg)' }}></div>
-              <div className="clock-marker" style={{ transform: 'rotate(330deg)' }}></div>
+          <div className="hero-pyramid-left" />
+          <div style={{ position: 'relative' }}>
+            <div className="hero-pyramid-main" />
+            <div className="pyramid-clock">
+              <div className="clock-hands">
+                <div className="clock-hour" />
+                <div className="clock-minute" />
+                <div className="clock-second" />
+              </div>
+              <div className="clock-center" />
             </div>
-            <div className="clock-hands">
-              <div className="clock-hour"></div>
-              <div className="clock-minute"></div>
-              <div className="clock-second"></div>
-            </div>
-            <div className="clock-center"></div>
           </div>
+          <div className="hero-pyramid-right" />
         </div>
 
         <h1 className="hero-title">
