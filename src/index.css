@@ -103,6 +103,7 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   background: rgba(8,12,30,0.97);
   box-shadow: 0 4px 30px rgba(0,0,0,0.5);
 }
+
 .nav-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -111,13 +112,16 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   align-items: center;
   padding: 0 1.5rem;
   gap: 1rem;
+  position: relative;
 }
+
 .logo {
   display: flex;
   align-items: center;
   gap: 0.65rem;
   text-decoration: none;
   flex-shrink: 0;
+  z-index: 1001;
 }
 .logo-text {
   font-family: 'Cinzel', serif;
@@ -161,12 +165,18 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   border-bottom: 13px solid var(--gold-dim);
 }
 
+/* nav-controls: transparent on desktop, real flex row on mobile */
+.nav-controls {
+  display: contents;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
   gap: 0.15rem;
   margin-left: auto;
   align-items: center;
+  padding: 0;
 }
 .nav-link {
   display: block;
@@ -188,6 +198,7 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   display: flex;
   gap: 0.25rem;
   margin-left: 0.5rem;
+  flex-shrink: 0;
 }
 .lang-btn {
   background: none;
@@ -200,45 +211,129 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   cursor: pointer;
   transition: all 0.2s;
   font-family: 'Outfit', sans-serif;
+  line-height: 1.4;
 }
 .lang-btn.active {
   background: rgba(255,215,0,0.15);
   border-color: var(--gold);
   color: var(--gold);
 }
+.lang-btn:hover:not(.active) {
+  border-color: rgba(255,215,0,0.4);
+  color: var(--text);
+}
 
+/* Hamburger — hidden on desktop */
 .menu-toggle {
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
   background: none;
   border: 1px solid var(--glass-border);
-  color: var(--text);
-  width: 38px; height: 38px;
   border-radius: 8px;
-  font-size: 1.1rem;
   cursor: pointer;
-  align-items: center;
-  justify-content: center;
+  padding: 0.4rem;
+  flex-shrink: 0;
   transition: border-color 0.2s;
-  margin-left: auto;
 }
 .menu-toggle:hover { border-color: var(--gold); }
 
+.hamburger-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s;
+  transform-origin: center;
+}
+.menu-toggle:hover .hamburger-bar { background: var(--gold); }
+.menu-toggle.open .hamburger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open .hamburger-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-toggle.open .hamburger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Backdrop — mobile only */
+.nav-backdrop {
+  display: none;
+}
+
+/* ── Tablet & mobile ≤ 960px ── */
 @media (max-width: 960px) {
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-left: auto;
+    z-index: 1001;
+  }
+
+  .lang-toggle { margin-left: 0; }
+
   .menu-toggle { display: flex; }
+
   .nav-links {
-    display: none;
     position: fixed;
-    top: var(--nav-h); left: 0; right: 0;
+    top: var(--nav-h);
+    left: 0; right: 0; bottom: 0;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-left: 0;
+    gap: 0;
+    padding: 0.75rem 0 2rem;
+    overflow-y: auto;
     background: rgba(8,12,30,0.98);
     backdrop-filter: blur(20px);
-    flex-direction: column;
-    padding: 1rem;
     border-bottom: 1px solid var(--glass-border);
-    gap: 0.25rem;
+    /* hidden state */
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease;
   }
-  .nav-links.open { display: flex; }
-  .nav-link { padding: 0.75rem 1rem; font-size: 0.95rem; }
-  .lang-toggle { margin-left: auto; }
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-links li { border-bottom: 1px solid rgba(255,215,0,0.07); }
+
+  .nav-link {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.98rem;
+    border-radius: 0;
+    transition: color 0.2s, background 0.2s, padding-left 0.2s;
+  }
+  .nav-link:hover, .nav-link.active {
+    padding-left: 2rem;
+  }
+
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    top: var(--nav-h);
+    background: rgba(0,0,0,0.55);
+    z-index: 999;
+  }
+}
+
+/* ── Mobile ≤ 600px ── */
+@media (max-width: 600px) {
+  .nav-container { padding: 0 1rem; }
+  .logo-text { font-size: 0.95rem; }
+  .lang-btn { font-size: 0.72rem; padding: 0.22rem 0.45rem; }
+}
+
+/* ── Very small ≤ 360px ── */
+@media (max-width: 360px) {
+  .logo-text { font-size: 0.82rem; }
+  .lang-toggle { display: none; }
 }
 
 /* ═══════════════════ PAGE LAYOUT ═══════════════════ */
@@ -382,9 +477,9 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   background: var(--gold);
   border-radius: 50%;
 }
-@keyframes rotateHour   { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
-@keyframes rotateMinute { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
-@keyframes rotateSecond { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+@keyframes rotateHour   { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes rotateMinute { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes rotateSecond { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 .hero-title {
   font-family: 'Cinzel', serif;
@@ -1038,8 +1133,8 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
 }
 .toast.success { background: var(--gold); color: var(--dark); }
 .toast.error   { background: #ff6b6b; color: #fff; }
-@keyframes toastIn { from { transform: translateX(110%); } to { transform: translateX(0); } }
-@keyframes toastOut { from { transform: translateX(0); } to { transform: translateX(110%); } }
+@keyframes toastIn  { from { transform: translateX(110%); } to { transform: translateX(0); } }
+@keyframes toastOut { from { transform: translateX(0); }   to { transform: translateX(110%); } }
 .toast.hiding { animation: toastOut 0.3s ease forwards; }
 
 /* ═══════════════════ MISC UTILITIES ═══════════════════ */
