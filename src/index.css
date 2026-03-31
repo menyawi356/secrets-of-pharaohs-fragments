@@ -306,8 +306,7 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
     pointer-events: all;
   }
 
-  .nav-links li {}
-  .nav-links li:last-child {}
+ 
 
   .nav-link {
     padding: 0.9rem 1.5rem;
