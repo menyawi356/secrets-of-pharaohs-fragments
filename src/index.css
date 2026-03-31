@@ -306,33 +306,31 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
     pointer-events: all;
   }
 
-  .nav-links li {
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .nav-links li:last-child { border-bottom: none; }
+  .nav-links li {}
+  .nav-links li:last-child {}
 
   .nav-link {
-    padding: 1rem 1.5rem;
+    padding: 0.9rem 1.5rem;
     font-size: 1rem;
     font-family: 'Outfit', sans-serif;
     font-weight: 500;
     color: #d0d8f0;
     border-radius: 0;
     letter-spacing: 0.2px;
-    transition: color 0.18s, background 0.18s;
-    border-left: 3px solid transparent;
+    transition: color 0.18s;
+    border-left: none !important;
     display: flex;
     align-items: center;
   }
   .nav-link:hover {
     color: #fff;
-    background: rgba(255,255,255,0.04);
-    border-left-color: rgba(212,175,55,0.35);
+    background: transparent !important;
+    border-left: none !important;
   }
   .nav-link.active {
     color: var(--gold);
-    background: rgba(212,175,55,0.06);
-    border-left: 3px solid var(--gold);
+    background: transparent !important;
+    border-left: none !important;
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 3px;
