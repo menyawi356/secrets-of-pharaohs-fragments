@@ -24,9 +24,28 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
+  // Close on outside click
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = (e) => {
+      if (!e.target.closest('.nav-container') && !e.target.closest('.nav-links')) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [menuOpen]);
+
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   return (
-    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+    <nav className={`navbar${scrolled ? ' scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="nav-container">
+
         <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
           <div className="pyramid-nav-logo">
             <div className="pyramid-main" />
@@ -36,26 +55,39 @@ export default function Navbar() {
           <span className="logo-text">Pharaohs' Fragments</span>
         </Link>
 
-        <div className="lang-toggle">
+        {/* Groups lang-toggle + hamburger on the right */}
+        <div className="nav-controls">
+          <div className="lang-toggle">
+            <button
+              className={`lang-btn${lang === 'en' ? ' active' : ''}`}
+              onClick={() => setLang('en')}
+              aria-pressed={lang === 'en'}
+            >EN</button>
+            <button
+              className={`lang-btn${lang === 'ar' ? ' active' : ''}`}
+              onClick={() => setLang('ar')}
+              aria-pressed={lang === 'ar'}
+            >عربي</button>
+          </div>
+
           <button
-            className={`lang-btn${lang === 'en' ? ' active' : ''}`}
-            onClick={() => setLang('en')}
-          >EN</button>
-          <button
-            className={`lang-btn${lang === 'ar' ? ' active' : ''}`}
-            onClick={() => setLang('ar')}
-          >عربي</button>
+            className={`menu-toggle${menuOpen ? ' open' : ''}`}
+            onClick={() => setMenuOpen(v => !v)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="nav-links"
+          >
+            <span className="hamburger-bar" />
+            <span className="hamburger-bar" />
+            <span className="hamburger-bar" />
+          </button>
         </div>
 
-        <button
-          className="menu-toggle"
-          onClick={() => setMenuOpen(v => !v)}
-          aria-label="Toggle menu"
+        <ul
+          id="nav-links"
+          className={`nav-links${menuOpen ? ' open' : ''}`}
+          role="list"
         >
-          {menuOpen ? '✕' : '☰'}
-        </button>
-
-        <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
           {NAV_ITEMS.map(item => (
             <li key={item.to}>
               <NavLink
@@ -70,6 +102,14 @@ export default function Navbar() {
           ))}
         </ul>
       </div>
+
+      {menuOpen && (
+        <div
+          className="nav-backdrop"
+          aria-hidden="true"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
     </nav>
   );
 }
