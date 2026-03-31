@@ -42,16 +42,13 @@ const PARTNERS = [
 
 function PartnerCard({ partner }) {
   return (
-    <div className={`partner-card partner-tier-${partner.tier}`}>
+    <div className={`partner-card partner-tier`}>
       <div className="partner-logo-wrap">
         <img src={partner.logo} alt={`${partner.name} logo`} className="partner-logo" />
       </div>
       <div className="partner-info">
         <div className="partner-name">{partner.name}</div>
         <div className="partner-desc">{partner.description}</div>
-        <span className={`partner-badge partner-badge-${partner.tier}`}>
-          {partner.tier.charAt(0).toUpperCase() + partner.tier.slice(1)} Partner
-        </span>
       </div>
     </div>
   );
