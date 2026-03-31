@@ -93,6 +93,179 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
 }
 
+/* ═══════════════════ NAVBAR ═══════════════════ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  background: rgba(8,12,30,0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.navbar.scrolled {
+  background: rgba(8,12,30,0.97);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 1000%;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  gap: 1rem;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  z-index: 1001;
+}
+.logo-text {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Pyramid logo */
+.pyramid-nav-logo {
+  position: relative;
+  width: 32px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.pyramid-main {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 24px solid var(--gold);
+}
+.pyramid-small-left {
+  position: absolute;
+  bottom: 0; left: -4px;
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 13px solid var(--gold-dim);
+}
+.pyramid-small-right {
+  position: absolute;
+  bottom: 0; right: -4px;
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 13px solid var(--gold-dim);
+}
+
+/* nav-controls: transparent on desktop, real flex row on mobile */
+.nav-controls {
+  display: contents;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0.15rem;
+  margin-left: auto;
+  align-items: center;
+  padding: 0;
+}
+.nav-link {
+  display: block;
+  padding: 0.4rem 0.7rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--gold);
+  background: rgba(255,215,0,0.08);
+}
+
+.lang-toggle {
+  display: flex;
+  gap: 0.25rem;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+.lang-btn {
+  background: none;
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.4;
+}
+.lang-btn.active {
+  background: rgba(255,215,0,0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.lang-btn:hover:not(.active) {
+  border-color: rgba(255,215,0,0.4);
+  color: var(--text);
+}
+
+/* Hamburger — hidden on desktop */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  background: none;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0.4rem;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+.menu-toggle:hover { border-color: var(--gold); }
+
+.hamburger-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s;
+  transform-origin: center;
+}
+.menu-toggle:hover .hamburger-bar { background: var(--gold); }
+.menu-toggle.open .hamburger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open .hamburger-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-toggle.open .hamburger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Backdrop — mobile only */
+.nav-backdrop {
+  display: none;
+}
+
 /* ── Tablet & mobile ≤ 960px ── */
 @media (max-width: 960px) {
   .nav-controls {
@@ -102,92 +275,6 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
     margin-left: auto;
     z-index: 1001;
   }
-
-  .lang-toggle { 
-    margin-left: 0; 
-  }
-
-  .menu-toggle { 
-    display: flex; 
-  }
-
-  .nav-links {
-    position: fixed;
-    top: var(--nav-h);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    margin-left: 0;
-    gap: 0;
-    padding: 0.5rem 0 2.5rem;
-    overflow-y: auto;
-    background: #0a0d1f;
-    backdrop-filter: blur(24px);
-    border-top: 2px solid rgba(212,175,55,0.2);
-    /* hidden state */
-    transform: translateY(-110%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.22s ease;
-  }
-  
-  .nav-links.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .nav-links li {
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  
-  .nav-links li:last-child { 
-    border-bottom: none; 
-  }
-
-  .nav-link {
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 500;
-    color: #d0d8f0;
-    border-radius: 0;
-    letter-spacing: 0.2px;
-    transition: color 0.18s, background 0.18s;
-    border-left: 3px solid transparent;
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-link:hover {
-    color: #fff;
-    background: rgba(255,255,255,0.04);
-    border-left-color: rgba(212,175,55,0.35);
-  }
-  
-  .nav-link.active {
-    color: var(--gold);
-    background: rgba(212,175,55,0.06);
-    border-left: 3px solid var(--gold);
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: var(--gold);
-    text-decoration-thickness: 2px;
-  }
-
-  .nav-backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    top: var(--nav-h);
-    background: rgba(0,0,0,0.55);
-    z-index: 999;
-  }
-}
 
   .lang-toggle { margin-left: 0; }
 
