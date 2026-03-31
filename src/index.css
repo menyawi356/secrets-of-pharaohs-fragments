@@ -98,7 +98,7 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
-  z-index: 1000;
+  z-index: 10000;
   background: rgba(8,12,30,0.85);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--glass-border);
