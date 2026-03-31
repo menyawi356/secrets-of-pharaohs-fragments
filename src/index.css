@@ -267,78 +267,38 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
 }
 
 /* ── Tablet & mobile ≤ 960px ── */
+/* ── Tablet & mobile ≤ 960px ── */
 @media (max-width: 960px) {
-  .nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-left: auto;
-    z-index: 100001;
-  }
-
-  .lang-toggle { margin-left: 0; }
-
-  .menu-toggle { display: flex; }
-
-  .nav-links {
-    position: fixed;
-    top: var(--nav-h);
-    left: 0; right: 0; bottom: 0;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    margin-left: 0;
-    gap: 0;
-    padding: 0.5rem 0 2.5rem;
-    overflow-y: auto;
-    background: #0a0d1f;
-    backdrop-filter: blur(24px);
-    border-top: 2px solid rgba(212,175,55,0.2);
-    /* hidden state */
-    transform: translateY(-110%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.22s ease;
-  }
-  .nav-links.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
 
   .nav-links li {
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    /* REMOVE this: */
+    /* border-bottom: 1px solid rgba(255,255,255,0.06); */
   }
-  .nav-links li:last-child { border-bottom: none; }
 
   .nav-link {
-    padding: 1rem 1.5rem;
+    padding: 0.85rem 1.5rem;
     font-size: 1rem;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 500;
     color: #d0d8f0;
     border-radius: 0;
-    letter-spacing: 0.2px;
-    transition: color 0.18s, background 0.18s;
-    border-left: 3px solid transparent;
-    display: flex;
-    align-items: center;
+    /* REMOVE border-left entirely: */
+    border-left: none;
   }
   .nav-link:hover {
     color: #fff;
-    background: rgba(255,255,255,0.04);
-    border-left-color: rgba(212,175,55,0.35);
+    background: transparent;       /* no background on hover */
+    border-left: none;              /* no left accent */
   }
   .nav-link.active {
     color: var(--gold);
-    background: rgba(212,175,55,0.06);
-    border-left: 3px solid var(--gold);
+    background: transparent;        /* no background */
+    border-left: none;              /* no left gold bar */
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-color: var(--gold);
     text-decoration-thickness: 2px;
   }
+
 
   .nav-backdrop {
     display: block;
