@@ -15,7 +15,7 @@
   --glass:         rgba(255,255,255,0.06);
   --glass-border:  rgba(255,215,0,0.18);
   --radius:        14px;
-  --nav-h:         72px;
+  --nav-h:         96px;
   /* Aliases for pyramid/clock component */
   --primary-gold:    #FFD700;
   --secondary-gold:  #FFA500;
@@ -99,15 +99,17 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
   z-index: 1000;
-  background: rgba(8,12,30,0.85);
+  background: rgba(8,12,30,0.97);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
   transition: background 0.3s, box-shadow 0.3s;
 }
 .navbar.scrolled {
   background: rgba(8,12,30,0.97);
   box-shadow: 0 4px 30px rgba(0,0,0,0.5);
 }
+
 
 .nav-container {
   max-width: 1280px;
@@ -185,10 +187,10 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
 }
 .nav-link {
   display: block;
-  padding: 0.4rem 0.7rem;
+  padding: 0.45rem 0.6rem;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 500;
   border-radius: 6px;
   transition: color 0.2s, background 0.2s;
@@ -283,14 +285,14 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   .nav-links {
     position: fixed;
     top: var(--nav-h);
-    left: 0; right: 0; bottom: 0;
+    left: 0; right: 0;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     margin-left: 0;
     gap: 0;
-    padding: 0.5rem 0 2.5rem;
-    overflow-y: auto;
+    padding: 0.5rem 0 1.5rem;
+    overflow-y: visible;
     background: #0a0d1f;
     backdrop-filter: blur(24px);
     border-top: 2px solid rgba(212,175,55,0.2);

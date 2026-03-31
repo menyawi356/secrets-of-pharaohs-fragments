@@ -15,14 +15,7 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const { lang, setLang } = useLang();
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
-  }, []);
 
   // Close on outside click
   useEffect(() => {
@@ -43,7 +36,7 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <nav className={`navbar${scrolled ? ' scrolled' : ''}`} role="navigation" aria-label="Main navigation">
+    <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="nav-container">
 
         <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
