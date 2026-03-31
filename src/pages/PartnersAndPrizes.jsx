@@ -17,9 +17,73 @@ function PrizeItem({ name, desc, value }) {
   );
 }
 
+const PARTNERS = [
+  {
+    name: 'Wolfram|Alpha',
+    logo: '/img/wolfram-corporate-logo-stacked-med.png',
+    description: 'Computational intelligence engine powering STEM education worldwide.',
+    tier: 'platinum',
+  },
+  {
+    name: 'Brilliant.org',
+    logo: '/img/brilliant-logo.png.jpeg',
+    description: 'Interactive learning platform for math, science, and computer science.',
+    tier: 'gold',
+  },
+  {
+    name: 'The Physics Classroom',
+    logo: '/img/physicsclassroom.png',
+    description: 'Trusted physics learning resource used by students and teachers globally.',
+    tier: 'gold',
+  },
+  {
+    name: 'Art of Problem Solving',
+    logo: '/img/AoPS_Main_Logo (1).png',
+    description: 'Premier mathematics curriculum and community for advanced learners.',
+    tier: 'silver',
+  },
+];
+
+function PartnerCard({ partner }) {
+  return (
+    <div className={`partner-card partner-tier-${partner.tier}`}>
+      <div className="partner-logo-wrap">
+        <img src={partner.logo} alt={`${partner.name} logo`} className="partner-logo" />
+      </div>
+      <div className="partner-info">
+        <div className="partner-name">{partner.name}</div>
+        <div className="partner-desc">{partner.description}</div>
+        <span className={`partner-badge partner-badge-${partner.tier}`}>
+          {partner.tier.charAt(0).toUpperCase() + partner.tier.slice(1)} Partner
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function PartnersAndPrizes() {
   return (
     <>
+      {/* ── PARTNERS SECTION ── */}
+      <div className="glass-card">
+        <h2 className="card-title">
+          <T en="Our Partners" ar="شركاؤنا" />
+        </h2>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '1.75rem', fontSize: '0.95rem', lineHeight: 1.7 }}>
+          <T
+            en="Pharaohs' Fragments League is proud to partner with world-class educational platforms to bring exceptional prizes and resources to our participants."
+            ar="يفخر دوري شظايا الفراعنة بالشراكة مع منصات تعليمية عالمية المستوى لتقديم جوائز وموارد استثنائية للمشاركين."
+          />
+        </p>
+
+        <div className="partners-grid">
+          {PARTNERS.map((p) => (
+            <PartnerCard key={p.name} partner={p} />
+          ))}
+        </div>
+      </div>
+
+      {/* ── PRIZES SECTION ── */}
       <div className="glass-card">
         <h2 className="card-title">
           <T en="Partners & Prizes" ar="الشركاء والجوائز" />
