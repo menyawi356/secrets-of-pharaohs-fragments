@@ -273,7 +273,7 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
     align-items: center;
     gap: 0.6rem;
     margin-left: auto;
-    z-index: 10001;
+    z-index: 100001;
   }
 
   .lang-toggle { margin-left: 0; }
