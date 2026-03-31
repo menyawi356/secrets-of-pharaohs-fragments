@@ -22,25 +22,21 @@ const PARTNERS = [
     name: 'Wolfram|Alpha',
     logo: '/img/wolfram-corporate-logo-stacked-med.png',
     description: 'Computational intelligence engine powering STEM education worldwide.',
-    tier: 'platinum',
   },
   {
     name: 'Brilliant.org',
     logo: '/img/brilliant-logo.png.jpeg',
     description: 'Interactive learning platform for math, science, and computer science.',
-    tier: 'gold',
   },
   {
     name: 'The Physics Classroom',
     logo: '/img/physicsclassroom.png',
     description: 'Trusted physics learning resource used by students and teachers globally.',
-    tier: 'gold',
   },
   {
     name: 'Art of Problem Solving',
     logo: '/img/AoPS_Main_Logo (1).png',
     description: 'Premier mathematics curriculum and community for advanced learners.',
-    tier: 'silver',
   },
 ];
 
