@@ -112,7 +112,7 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
 .nav-container {
   max-width: 1280px;
   margin: 0 auto;
-  height: 1000%;
+  height: 100%;
   display: flex;
   align-items: center;
   padding: 0 1.5rem;
