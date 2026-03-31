@@ -406,15 +406,17 @@ body[dir="rtl"] ul, body[dir="rtl"] ol {
 
 /* ── Mobile ≤ 600px ── */
 @media (max-width: 600px) {
-  .nav-container { padding: 0 1rem; }
-  .logo-text { font-size: 0.95rem; }
-  .lang-btn { font-size: 0.72rem; padding: 0.22rem 0.45rem; }
+  .nav-container { padding: 0 0.75rem; gap: 0.5rem; }
+  .logo-text { font-size: 0.9rem; }
+  .lang-btn { font-size: 0.7rem; padding: 0.2rem 0.4rem; }
 }
 
 /* ── Very small ≤ 360px ── */
 @media (max-width: 360px) {
   .logo-text { font-size: 0.82rem; }
-  .lang-toggle { display: none; }
+  .lang-toggle { display: flex; gap: 0.15rem; }
+  .lang-btn { font-size: 0.65rem; padding: 0.18rem 0.35rem; border-radius: 5px; }
+  .menu-toggle { width: 32px; height: 32px; }
 }
 
 /* ═══════════════════ PAGE LAYOUT ═══════════════════ */
