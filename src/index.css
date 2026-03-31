@@ -183,6 +183,10 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
   align-items: center;
   padding: 0;
 }
+/* Desktop: show inline list, hide mobile overlay */
+.nav-links-desktop { display: flex; }
+.nav-links-mobile  { display: none; }
+
 .nav-link {
   display: block;
   padding: 0.4rem 0.7rem;
@@ -280,7 +284,12 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
 
   .menu-toggle { display: flex; }
 
-  .nav-links {
+  /* Hide the desktop inline list */
+  .nav-links-desktop { display: none !important; }
+
+  /* Mobile full-screen overlay */
+  .nav-links-mobile {
+    display: flex;
     position: fixed;
     top: var(--nav-h);
     left: 0; right: 0; bottom: 0;
@@ -294,27 +303,28 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
     background: #0a0d1f;
     backdrop-filter: blur(24px);
     border-top: 2px solid rgba(212,175,55,0.2);
+    z-index: 1000;
     /* hidden state */
     transform: translateY(-110%);
     opacity: 0;
     pointer-events: none;
     transition: transform 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.22s ease;
   }
-  .nav-links.open {
+  .nav-links-mobile.open {
     transform: translateY(0);
     opacity: 1;
     pointer-events: all;
   }
 
-  .nav-links li {
+  .nav-links-mobile li {
     flex: 1;
     display: flex;
     align-items: stretch;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .nav-links li:last-child { border-bottom: none; }
+  .nav-links-mobile li:last-child { border-bottom: none; }
 
-  .nav-link {
+  .nav-links-mobile .nav-link {
     flex: 1;
     padding: 0 1.5rem;
     font-size: 0.95rem;
@@ -327,13 +337,15 @@ body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
     border-left: 3px solid transparent;
     display: flex;
     align-items: center;
+    background: none;
+    white-space: normal;
   }
-  .nav-link:hover {
+  .nav-links-mobile .nav-link:hover {
     color: #fff;
     background: rgba(255,255,255,0.04);
     border-left-color: rgba(212,175,55,0.35);
   }
-  .nav-link.active {
+  .nav-links-mobile .nav-link.active {
     color: var(--gold);
     background: rgba(212,175,55,0.06);
     border-left: 3px solid var(--gold);

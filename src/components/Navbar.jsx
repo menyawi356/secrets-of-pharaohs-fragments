@@ -55,6 +55,21 @@ export default function Navbar() {
           <span className="logo-text">Pharaohs' Fragments</span>
         </Link>
 
+        {/* Desktop nav links — hidden on mobile via CSS */}
+        <ul className="nav-links nav-links-desktop" role="list">
+          {NAV_ITEMS.map(item => (
+            <li key={item.to}>
+              <NavLink
+                className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+                to={item.to}
+                end={item.to === '/'}
+              >
+                {item.en}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
         {/* Groups lang-toggle + hamburger on the right */}
         <div className="nav-controls">
           <div className="lang-toggle">
@@ -75,33 +90,33 @@ export default function Navbar() {
             onClick={() => setMenuOpen(v => !v)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
-            aria-controls="nav-links"
           >
             <span className="hamburger-bar" />
             <span className="hamburger-bar" />
             <span className="hamburger-bar" />
           </button>
         </div>
-
-        <ul
-          id="nav-links"
-          className={`nav-links${menuOpen ? ' open' : ''}`}
-          role="list"
-        >
-          {NAV_ITEMS.map(item => (
-            <li key={item.to}>
-              <NavLink
-                className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
-                to={item.to}
-                end={item.to === '/'}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.en}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
       </div>
+
+      {/* Mobile nav — full screen overlay, outside nav-container */}
+      <ul
+        id="nav-links-mobile"
+        className={`nav-links nav-links-mobile${menuOpen ? ' open' : ''}`}
+        role="list"
+      >
+        {NAV_ITEMS.map(item => (
+          <li key={item.to}>
+            <NavLink
+              className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+              to={item.to}
+              end={item.to === '/'}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.en}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
 
       {menuOpen && (
         <div
