@@ -441,76 +441,16 @@ export default function Ambassador() {
         ))}
       </div>
 
-      {/* Prize tiers */}
-      <div style={{ marginBottom: '1.75rem' }}>
-        <h2 style={{ fontFamily: 'Cinzel,serif', color: 'var(--gold)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', textAlign: 'center', letterSpacing: '0.5px' }}>
-          {p('Ambassador Prizes', 'جوائز السفراء')}
-        </h2>
-
-        {/* Tier 1 — 5+ referrals */}
-        <div style={{ background: 'rgba(255,255,255,0.03)', border: '1.5px solid rgba(100,180,255,0.25)', borderRadius: '14px', padding: '1.2rem 1.5rem', marginBottom: '0.85rem', display: 'flex', alignItems: 'flex-start', gap: '1rem', flexWrap: 'wrap' }}>
-          <div style={{ fontSize: '1.8rem', flexShrink: 0, marginTop: '0.1rem' }}>🎓</div>
-          <div style={{ flex: 1, minWidth: '220px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '0.3rem' }}>
-              <span style={{ fontFamily: 'Cinzel,serif', color: '#89c4ff', fontWeight: 700, fontSize: '0.98rem' }}>
-                {p('5+ Referrals', '5 إحالات أو أكثر')}
-              </span>
-              <span style={{ background: 'rgba(100,180,255,0.12)', border: '1px solid rgba(100,180,255,0.3)', color: '#89c4ff', borderRadius: '20px', padding: '0.1rem 0.6rem', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.4px' }}>ELIGIBLE</span>
-            </div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', margin: '0 0 0.6rem' }}>
-              {p('Any ambassador who refers 5 or more registered teams earns a 1.5-year subscription to The Physics Classroom — covering Physics, Chemistry, and Math.', 'كل سفير يُحيل 5 فرق مسجلة أو أكثر يحصل على اشتراك لمدة سنة ونصف في The Physics Classroom يشمل الفيزياء والكيمياء والرياضيات.')}
-            </p>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              {['Physics', 'Chemistry', 'Math'].map(s => (
-                <span key={s} style={{ background: 'rgba(100,180,255,0.1)', border: '1px solid rgba(100,180,255,0.25)', color: '#89c4ff', borderRadius: '20px', padding: '0.12rem 0.6rem', fontSize: '0.72rem', fontWeight: 600 }}>{s}</span>
-              ))}
-              <span style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', color: 'var(--text-muted)', borderRadius: '20px', padding: '0.12rem 0.6rem', fontSize: '0.72rem', fontWeight: 600 }}>1.5 Years</span>
-            </div>
+      {/* Prize banner */}
+      <div style={{ background: 'linear-gradient(135deg,rgba(212,175,55,0.13),rgba(255,215,0,0.04))', border: '1.5px solid rgba(212,175,55,0.4)', borderRadius: '14px', padding: '1.4rem 1.6rem', marginBottom: '1.75rem', display: 'flex', alignItems: 'center', gap: '1.2rem', flexWrap: 'wrap' }}>
+        <div style={{ fontSize: '2.5rem' }}>🥇</div>
+        <div>
+          <div style={{ fontFamily: 'Cinzel,serif', color: 'var(--gold)', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.3rem' }}>
+            {p('Top Ambassador Prize', 'جائزة أفضل سفير')}
           </div>
-        </div>
-
-        {/* Tier 2 — Top ambassadors */}
-        <div style={{ background: 'linear-gradient(135deg,rgba(212,175,55,0.08),rgba(255,215,0,0.03))', border: '1.5px solid rgba(212,175,55,0.35)', borderRadius: '14px', padding: '1.2rem 1.5rem', marginBottom: '0.85rem', display: 'flex', alignItems: 'flex-start', gap: '1rem', flexWrap: 'wrap' }}>
-          <div style={{ fontSize: '1.8rem', flexShrink: 0, marginTop: '0.1rem' }}>🥈</div>
-          <div style={{ flex: 1, minWidth: '220px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '0.3rem' }}>
-              <span style={{ fontFamily: 'Cinzel,serif', color: 'var(--gold)', fontWeight: 700, fontSize: '0.98rem' }}>
-                {p('Top Ambassadors', 'أفضل السفراء')}
-              </span>
-              <span style={{ background: 'rgba(212,175,55,0.12)', border: '1px solid rgba(212,175,55,0.35)', color: 'var(--gold)', borderRadius: '20px', padding: '0.1rem 0.6rem', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.4px' }}>TOP RANKED</span>
-            </div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', margin: '0 0 0.6rem' }}>
-              {p('The highest-performing ambassadors on the leaderboard receive a 3-year subscription to The Physics Classroom across all Physics, Chemistry, and Math courses.', 'يحصل أفضل السفراء على قائمة المتصدرين على اشتراك لمدة 3 سنوات في The Physics Classroom يشمل جميع مسارات الفيزياء والكيمياء والرياضيات.')}
-            </p>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              {['Physics', 'Chemistry', 'Math'].map(s => (
-                <span key={s} style={{ background: 'rgba(212,175,55,0.1)', border: '1px solid rgba(212,175,55,0.25)', color: 'var(--gold)', borderRadius: '20px', padding: '0.12rem 0.6rem', fontSize: '0.72rem', fontWeight: 600 }}>{s}</span>
-              ))}
-              <span style={{ background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.2)', color: 'var(--gold)', borderRadius: '20px', padding: '0.12rem 0.6rem', fontSize: '0.72rem', fontWeight: 600 }}>3 Years</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Tier 3 — #1 Champion */}
-        <div style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.14),rgba(212,175,55,0.05))', border: '2px solid rgba(255,215,0,0.7)', borderRadius: '14px', padding: '1.2rem 1.5rem', boxShadow: '0 0 30px rgba(255,215,0,0.1)', display: 'flex', alignItems: 'flex-start', gap: '1rem', flexWrap: 'wrap' }}>
-          <div style={{ fontSize: '1.8rem', flexShrink: 0, marginTop: '0.1rem' }}>🥇</div>
-          <div style={{ flex: 1, minWidth: '220px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '0.3rem' }}>
-              <span style={{ fontFamily: 'Cinzel,serif', color: 'var(--gold)', fontWeight: 700, fontSize: '1rem' }}>
-                {p('#1 Ambassador — Grand Champion', 'السفير الأول — البطل الكبير')}
-              </span>
-              <span style={{ background: 'rgba(255,215,0,0.2)', border: '1px solid rgba(255,215,0,0.6)', color: '#fff', borderRadius: '20px', padding: '0.1rem 0.6rem', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.4px' }}>🏆 #1 ONLY</span>
-            </div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', margin: '0 0 0.6rem' }}>
-              {p('The ambassador who finishes #1 on the leaderboard at registration close (May 31) wins a lifetime subscription to The Physics Classroom — unlimited access to Physics, Chemistry, and Math forever — plus a featured spot on the website.', 'السفير الذي يتصدر القائمة في نهاية التسجيل (31 مايو) يفوز باشتراك مدى الحياة في The Physics Classroom مع وصول غير محدود للفيزياء والكيمياء والرياضيات إلى الأبد، إضافةً إلى ظهور اسمه على الموقع.')}
-            </p>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              {['Physics', 'Chemistry', 'Math'].map(s => (
-                <span key={s} style={{ background: 'rgba(255,215,0,0.13)', border: '1px solid rgba(255,215,0,0.4)', color: 'var(--gold)', borderRadius: '20px', padding: '0.12rem 0.6rem', fontSize: '0.72rem', fontWeight: 600 }}>{s}</span>
-              ))}
-              <span style={{ background: 'rgba(255,215,0,0.18)', border: '1px solid rgba(255,215,0,0.5)', color: '#fff', borderRadius: '20px', padding: '0.12rem 0.6rem', fontSize: '0.72rem', fontWeight: 700 }}>Lifetime ♾️</span>
-            </div>
-          </div>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', margin: 0 }}>
+            {p('The ambassador with the most referrals at registration close (May 31) wins an exclusive IPhFL prize and gets featured on the website.', 'يفوز السفير الأكثر إحالات في نهاية التسجيل (31 مايو) بجائزة حصرية ويظهر اسمه على الموقع.')}
+          </p>
         </div>
       </div>
 
