@@ -3,14 +3,14 @@ import { NavLink, Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext.jsx';
 
 const NAV_ITEMS = [
-  { to: '/',            en: 'Home' },
-  { to: '/about',       en: 'About' },
-  { to: '/meet-us',     en: 'Meet Us' },
-  { to: '/timeline',    en: 'Timeline' },
-  { to: '/partners',    en: 'Partners & Prizes' },
-  { to: '/ambassador',  en: '🏛️ Ambassadors' },
-  { to: '/register',    en: 'Register' },
-  { to: '/faq',         en: 'FAQ' },
+  { to: '/',            en: 'Home',              ar: 'الرئيسية' },
+  { to: '/about',       en: 'About',             ar: 'عن الدوري' },
+  { to: '/meet-us',     en: 'Meet Us',           ar: 'تعرف علينا' },
+  { to: '/timeline',    en: 'Timeline',          ar: 'الجدول الزمني' },
+  { to: '/partners',    en: 'Partners & Prizes', ar: 'الشركاء والجوائز' },
+  { to: '/ambassador',  en: '🏛️ Ambassadors',   ar: '🏛️ السفراء' },
+  { to: '/register',    en: 'Register',          ar: 'التسجيل' },
+  { to: '/faq',         en: 'FAQ',               ar: 'الأسئلة الشائعة' },
 ];
 
 export default function Navbar() {
@@ -89,7 +89,7 @@ export default function Navbar() {
                 end={item.to === '/'}
                 onClick={() => setMenuOpen(false)}
               >
-                {item.en}
+                {lang === 'ar' ? item.ar : item.en}
               </NavLink>
             </li>
           ))}

@@ -16,19 +16,19 @@ export default function About() {
           <p>
             <T
               en="Pharaohs' Fragments is an innovative international science League created and organized by students in Egypt. Open to middle school students, high school students, and bachelor's degree students from around the world, our mission is to make STEM education engaging and accessible by combining physics with the rich narrative of ancient Egyptian adventure."
-              ar="شظايا الفراعنة هو دوري علوم دولي مبتكر أنشأه ونظمه طلاب في مصر. مفتوح لطلاب المرحلة الإعدادية والثانوية والبكالوريوس من جميع أنحاء العالم، مهمتنا جعل تعليم العلوم جذاباً ومتاحاً."
+              ar="شظايا الفراعنة هو دوري علوم دولي مبتكر أنشأه ونظمه طلاب في مصر. يستهدف الدوري طلاب المرحلة الإعدادية والثانوية وطلاب البكالوريوس من جميع أنحاء العالم، وتتمحور رسالتنا حول جعل تعليم العلوم والتكنولوجيا والهندسة والرياضيات تجربةً شيّقة ومتاحة للجميع، وذلك بدمج الفيزياء مع إرث مصر الحضاري العريق في قالب مغامرة درامية آسرة."
             />
           </p>
           <p>
             <T
               en="Participants form teams of up to three and work together to solve story-driven physics challenges, all integrated into an immersive Egyptian mythology narrative. As teams progress through four rounds of the League, they collect six ancient fragments: powerful artifacts said to hold the key to understanding the universe's fundamental forces."
-              ar="يشكل المشاركون فرقًا من ثلاثة أفراد ويعملون معًا لحل تحديات علمية قصصية في الفيزياء، مدمجة في سرد غامر للأساطير المصرية."
+              ar="يُكوّن المشاركون فرقاً من ثلاثة أعضاء أو أقل، ويتعاونون معاً لحل تحديات الفيزياء ذات الطابع القصصي المدمجة في سردية غامرة من الأساطير المصرية القديمة. وكلما تقدمت الفرق في الجولات الأربع للدوري، جمعوا ستة شظايا أثرية قديمة يُقال إنها تحمل مفتاح فهم القوى الأساسية للكون."
             />
           </p>
           <p>
             <T
               en="This competition is designed to challenge students across all levels in physics, while fostering teamwork, problem-solving, and cultural appreciation. International students from every country are warmly welcome. By blending education with an epic adventure, we aim to inspire the next generation of scientists, engineers, and thinkers."
-              ar="صممت هذه المسابقة لتحدي الطلاب في جميع المستويات في الفيزياء مع تعزيز العمل الجماعي. الطلاب الدوليون من جميع البلدان مرحب بهم."
+              ar="صُمِّمت هذه المسابقة لتحدي الطلاب في جميع مستوياتهم في الفيزياء، مع تعزيز روح العمل الجماعي وتنمية مهارات حل المشكلات والتقدير الثقافي. نرحب بحرارة بالطلاب الدوليين من كل بلدان العالم. ومن خلال الجمع بين التعليم والمغامرة الملحمية، نسعى إلى إلهام الجيل القادم من العلماء والمهندسين والمفكرين."
             />
           </p>
         </div>
@@ -42,26 +42,26 @@ export default function About() {
           <p>
             <T
               en="The competition is structured across four exciting rounds, each advancing teams deeper into the Egyptian adventure:"
-              ar="تتكون المسابقة من أربع جولات مثيرة، تأخذ الفرق في رحلة أعمق إلى المغامرة المصرية:"
+              ar="تتكون المسابقة من أربع جولات مثيرة، تأخذ الفرق في رحلة أعمق إلى المغامرة المصرية في كل مرحلة:"
             />
           </p>
           <ul>
             {[
               {
                 en: <><strong>Round 1 – First Round (June 20):</strong> The opening qualification round. All registered teams compete in science challenges spanning all areas of physics to earn their place in the next stage.</>,
-                ar: <><strong>الجولة الأولى (20 يونيو):</strong> جولة التصفية الافتتاحية لجميع الفرق المسجلة.</>,
+                ar: <><strong>الجولة الأولى (20 يونيو):</strong> جولة التصفية الافتتاحية المفتوحة لجميع الفرق المسجلة، تتنافس فيها الفرق في تحديات علمية تغطي جميع مجالات الفيزياء لضمان مكانها في المرحلة التالية.</>,
               },
               {
                 en: <><strong>Round 2 – Second Round (June 22):</strong> The field narrows. Qualifying teams face more demanding physics challenges, testing deeper understanding and team coordination.</>,
-                ar: <><strong>الجولة الثانية (22 يونيو):</strong> تتضيق الساحة. تواجه الفرق المتأهلة تحديات أكثر صعوبة.</>,
+                ar: <><strong>الجولة الثانية (22 يونيو):</strong> تضيق دائرة المتنافسين. تواجه الفرق المتأهلة تحديات فيزيائية أكثر تعمقاً وصعوبة، تختبر مستوى الفهم المفاهيمي والتنسيق بين أعضاء الفريق.</>,
               },
               {
                 en: <><strong>Round 3 – Semi-Final (June 24):</strong> Only the strongest teams remain. High-intensity physics problems push participants to their full potential.</>,
-                ar: <><strong>الجولة الثالثة: نصف النهائي (24 يونيو):</strong> تبقى الفرق الأقوى فقط وتواجه مسائل علمية عالية الكثافة.</>,
+                ar: <><strong>الجولة الثالثة: نصف النهائي (24 يونيو):</strong> لا تبقى إلا الفرق الأقوى. مسائل فيزيائية عالية الكثافة تدفع المشاركين إلى بلوغ أقصى طاقاتهم وإمكاناتهم.</>,
               },
               {
                 en: <><strong>Round 4 – Final Round (June 27):</strong> The ultimate showdown. The top three finalist teams battle for glory and incredible prizes in the grand finale.</>,
-                ar: <><strong>الجولة الرابعة: النهائي (27 يونيو):</strong> المواجهة الكبرى. أفضل ثلاث فرق تتنافس على اللقب والجوائز الرائعة.</>,
+                ar: <><strong>الجولة الرابعة: النهائي الكبير (27 يونيو):</strong> المواجهة الكبرى الحاسمة. تتنافس أفضل ثلاث فرق على اللقب والجوائز الاستثنائية في حفل الختام الكبير.</>,
               },
             ].map((item, i) => (
               <li key={i}>
@@ -116,13 +116,13 @@ export default function About() {
           <p>
             <T
               en="We are a group of passionate students from Egypt who share a love for science and our country's rich history, working under the supervision of Dr. Mohamed Ali. Our team came together with the vision of creating a unique educational experience that would inspire students worldwide to explore the wonders of physics."
-              ar="نحن مجموعة من الطلاب المتحمسين من مصر، تحت إشراف الدكتور محمد علي، نتشارك حب العلوم وتاريخ بلدنا الغني."
+              ar="نحن مجموعة من الطلاب المتحمسين في مصر، نعمل تحت إشراف الدكتور محمد علي، وتجمعنا شغف مشترك بالعلوم وحب عميق لتاريخ وطننا الغني. التقى فريقنا بدافع الرغبة في خلق تجربة تعليمية استثنائية تُلهم الطلاب في أرجاء العالم كافة لاستكشاف عجائب الفيزياء."
             />
           </p>
           <p>
             <T
               en="Our organizing committee includes students specializing in physics, computer science, and history, allowing us to create a truly interdisciplinary competition that bridges ancient wisdom with modern scientific knowledge."
-              ar="تتضمن لجنتنا المنظمة طلابًا متخصصين في الفيزياء وعلوم الكمبيوتر والتاريخ."
+              ar="تضم لجنتنا التنظيمية طلاباً متخصصين في الفيزياء وعلوم الحاسب والتاريخ، مما يُمكّننا من تصميم مسابقة متعددة التخصصات بامتياز، تجسر الهوة بين الحكمة القديمة والمعرفة العلمية الحديثة."
             />
           </p>
         </div>

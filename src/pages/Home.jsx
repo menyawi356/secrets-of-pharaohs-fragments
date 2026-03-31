@@ -50,7 +50,7 @@ export default function Home() {
         <p className="hero-description">
           <T
             en="An international science League organized by students in Egypt, under the supervision of Dr. Mohamed Ali, combining Egyptian adventure narrative with STEM education. Open to middle schoolers, high schoolers, and bachelor's students worldwide: participants solve story-driven challenges in physics in teams of up to three."
-            ar="دوري علوم دولي ينظمه طلاب في مصر، تحت إشراف الدكتور محمد علي، يجمع بين السرد المصري القديم وتعليم العلوم. مفتوح لطلاب المرحلة الإعدادية والثانوية والبكالوريوس من جميع أنحاء العالم."
+            ar="دوري علوم دولي ينظمه طلاب في مصر تحت إشراف الدكتور محمد علي، يجمع بين السرد المصري القديم وتعليم العلوم والتكنولوجيا والهندسة والرياضيات. مفتوح لطلاب المرحلة الإعدادية والثانوية وطلاب البكالوريوس من جميع أنحاء العالم، حيث تتنافس الفرق المؤلفة من ثلاثة أعضاء أو أقل في حل تحديات فيزيائية قصصية شيّقة."
           />
         </p>
         <Link to="/register" className="cta-button">
@@ -66,7 +66,7 @@ export default function Home() {
           <p>
             <T
               en="Pharaohs' Fragments is a unique international science League that blends ancient Egyptian mythology with modern STEM challenges in physics. Open to middle school students, high school students, and bachelor's students from any country, teams will embark on a virtual journey through Egypt, solving story-driven science puzzles to collect the ancient fragments and unlock their power."
-              ar="شظايا الفراعنة هو دوري علوم دولي فريد يمزج بين الأساطير المصرية القديمة وتحديات العلوم الحديثة في الفيزياء. مفتوح لطلاب المرحلة الإعدادية والثانوية والبكالوريوس من أي دولة."
+              ar="شظايا الفراعنة هو دوري علوم دولي فريد من نوعه يمزج بين الأساطير المصرية القديمة وتحديات العلوم الحديثة في الفيزياء. مفتوح لطلاب المرحلة الإعدادية والثانوية وطلاب البكالوريوس من جميع دول العالم، حيث تنطلق الفرق في رحلة افتراضية عبر مصر الفرعونية لحل الألغاز العلمية القصصية، وجمع الشظايا القديمة وإطلاق قوتها الغامضة."
             />
           </p>
         </div>
@@ -78,19 +78,19 @@ export default function Home() {
             en_title: 'Ancient Fragments',
             ar_title: 'الشظايا القديمة',
             en_desc: 'Collect six ancient Egyptian fragments by solving science challenges across physics to unlock their mysterious power.',
-            ar_desc: 'اجمع ست شظايا مصرية قديمة من خلال حل تحديات علمية في الفيزياء.',
+            ar_desc: 'اجمع ستة شظايا مصرية قديمة من خلال حل التحديات العلمية في مختلف فروع الفيزياء، وأطلق طاقتها الغامضة المخفية منذ آلاف السنين.',
           },
           {
             en_title: 'Egyptian Adventure',
             ar_title: 'مغامرة مصرية',
             en_desc: 'Embark on a virtual journey through ancient Egypt, solving puzzles in iconic locations.',
-            ar_desc: 'انطلق في رحلة افتراضية عبر مصر القديمة، وحل الألغاز في مواقع أيقونية.',
+            ar_desc: 'انطلق في رحلة افتراضية آسرة عبر أرجاء مصر القديمة، وحلّ الألغاز العلمية في أشهر مواقعها الأثرية الخالدة.',
           },
           {
             en_title: 'International Competition',
-            ar_title: 'مسابقة دولية',
+            ar_title: 'منافسة دولية',
             en_desc: "Open to all international students: middle school, high school, and bachelor's: from any country worldwide.",
-            ar_desc: 'مفتوح لجميع الطلاب الدوليين من المرحلة الإعدادية والثانوية والبكالوريوس من أي دولة في العالم.',
+            ar_desc: 'مفتوح لجميع الطلاب حول العالم من المرحلة الإعدادية والثانوية وطلاب البكالوريوس من أي دولة، في منافسة علمية حقيقية على المستوى الدولي.',
           },
         ].map((f, i) => (
           <div className="feature-card" key={i}>

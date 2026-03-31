@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 
 :root {
   --gold:          #FFD700;
@@ -36,7 +36,59 @@ body {
   line-height: 1.65;
 }
 
-body[dir="rtl"] { font-family: 'Outfit', 'Noto Sans Arabic', sans-serif; }
+body[dir="rtl"] {
+  font-family: 'Noto Sans Arabic', 'Outfit', sans-serif;
+  text-align: right;
+}
+body[dir="rtl"] .hero-title,
+body[dir="rtl"] .hero-subtitle,
+body[dir="rtl"] .hero-description,
+body[dir="rtl"] .card-title,
+body[dir="rtl"] .feature-title,
+body[dir="rtl"] .feature-description {
+  font-family: 'Noto Sans Arabic', 'Outfit', sans-serif;
+  letter-spacing: 0;
+}
+body[dir="rtl"] .nav-links {
+  direction: rtl;
+}
+body[dir="rtl"] .logo-text {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.03em;
+}
+body[dir="rtl"] .faq-toggle {
+  margin-right: auto;
+  margin-left: 0;
+}
+body[dir="rtl"] .timeline-item {
+  border-left: none;
+  border-right: 3px solid var(--gold-dim);
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
+body[dir="rtl"] .round-header {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+body[dir="rtl"] .prize-item {
+  flex-direction: row-reverse;
+}
+body[dir="rtl"] .prize-item-value {
+  text-align: left;
+}
+body[dir="rtl"] .partner-info {
+  text-align: right;
+}
+body[dir="rtl"] .team-member-card {
+  direction: rtl;
+}
+body[dir="rtl"] .contact-info {
+  text-align: right;
+}
+body[dir="rtl"] ul, body[dir="rtl"] ol {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
 
 /* ═══════════════════ BACKGROUND ═══════════════════ */
 .physics-bg {

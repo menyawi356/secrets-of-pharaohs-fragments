@@ -51,7 +51,7 @@ export default function MeetUs() {
           <p>
             <T
               en="Pharaohs' Fragments is brought to you by the IPhFL team, a group of dedicated physics enthusiasts committed to creating an exceptional educational experience."
-              ar="شظايا الفراعنة تقدم لكم بواسطة فريق IPhFL، مجموعة من المتحمسين للفيزياء الملتزمين بإنشاء تجربة تعليمية استثنائية."
+              ar="شظايا الفراعنة تُقدَّم إليكم بواسطة فريق IPhFL، مجموعة من المتحمسين للفيزياء المُخلصين لإرساء تجربة تعليمية استثنائية تجمع بين العلم والتراث."
             />
           </p>
         </div>
