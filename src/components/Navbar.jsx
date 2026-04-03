@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { to: '/meet-us',     en: 'Meet Us',           ar: 'تعرف علينا' },
   { to: '/timeline',    en: 'Timeline',          ar: 'الجدول الزمني' },
   { to: '/partners',    en: 'Partners & Prizes', ar: 'الشركاء والجوائز' },
-  { to: '/ambassador',  en: '🏛️ Ambassadors',   ar: '🏛️ السفراء' },
+  { to: '/ambassador',  en: 'Ambassadors',   ar: 'السفراء' },
   { to: '/register',    en: 'Register',          ar: 'التسجيل' },
   { to: '/faq',         en: 'FAQ',               ar: 'الأسئلة الشائعة' },
 ];
