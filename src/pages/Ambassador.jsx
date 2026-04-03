@@ -106,7 +106,7 @@ function MyLinkPanel({ ambassador, onLogout }) {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '0.5rem', gap: '1rem' }}>
         <div style={{ fontFamily: 'Cinzel,serif', color: 'var(--gold)', fontSize: '1.05rem' }}>
-          🏛️ Welcome back, {ambassador.name}!
+           Welcome back, {ambassador.name}!
         </div>
         <button onClick={onLogout} style={{
           background: 'none', border: '1px solid rgba(255,255,255,0.15)',
