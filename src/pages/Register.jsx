@@ -48,39 +48,12 @@ async function loadEmailJS() {
   });
 }
 
-const AMBASSADOR_PROGRAM_URL = 'https://pharaohleague.org/ambassador';
-
-const CONNECT_WITH_US = {
-  instagram:         'https://www.instagram.com/pharaohsfragments.info/',
-  whatsapp:          'https://chat.whatsapp.com/FYimIj9xEpACzNtM4D1OqK?mode=gi_t',
-  whatsapp_channel:  'https://whatsapp.com/channel/0029Vb7t9OV9sBI3isU0lU2m',
-  telegram_channel:  'https://t.me/+xQJzhdMvO282MDc0',
-  telegram_chat:     'https://t.me/IPHFLChat',
-  linkedin:          'https://www.linkedin.com/in/pharaohs-fragments-b097253b6',
-  twitter:           'https://x.com/PharaohsF57933',
-  website:           'https://pharaohleague.org/',
-  support_email:     'support@pharaohleague.org',
-};
-
-async function sendConfirmationEmail(toEmail, toName, teamName, country = '') {
+async function sendConfirmationEmail(toEmail, toName, teamName) {
   try {
     await loadEmailJS();
     await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      to_email:              toEmail,
-      to_name:               toName,
-      team_name:             teamName,
-      country:               country,
-      ambassador_link:       AMBASSADOR_PROGRAM_URL,
-      reply_to:              CONNECT_WITH_US.support_email,
-      connect_instagram:     CONNECT_WITH_US.instagram,
-      connect_whatsapp:      CONNECT_WITH_US.whatsapp,
-      connect_whatsapp_ch:   CONNECT_WITH_US.whatsapp_channel,
-      connect_telegram_ch:   CONNECT_WITH_US.telegram_channel,
-      connect_telegram_chat: CONNECT_WITH_US.telegram_chat,
-      connect_linkedin:      CONNECT_WITH_US.linkedin,
-      connect_twitter:       CONNECT_WITH_US.twitter,
-      connect_website:       CONNECT_WITH_US.website,
-      connect_email:         CONNECT_WITH_US.support_email,
+      to_email: toEmail, to_name: toName, team_name: teamName,
+      reply_to: 'pharaohsfragments@gmail.com',
     });
   } catch (err) {
     console.warn('Could not send confirmation email to', toEmail, err);
@@ -433,9 +406,9 @@ export default function Register() {
 
       // Send confirmation emails
       setStatus('sending');
-      const jobs = [sendConfirmationEmail(leaderEmail, leader.name.trim(), teamName.trim(), leader.country.trim())];
-      if (m2Email) jobs.push(sendConfirmationEmail(m2Email, m2.name.trim(), teamName.trim(), m2.country.trim()));
-      if (m3Email) jobs.push(sendConfirmationEmail(m3Email, m3.name.trim(), teamName.trim(), m3.country.trim()));
+      const jobs = [sendConfirmationEmail(leaderEmail, leader.name.trim(), teamName.trim())];
+      if (m2Email) jobs.push(sendConfirmationEmail(m2Email, m2.name.trim(), teamName.trim()));
+      if (m3Email) jobs.push(sendConfirmationEmail(m3Email, m3.name.trim(), teamName.trim()));
       await Promise.allSettled(jobs);
 
       showToast(`✅ Team "${teamName.trim()}" registered! Confirmation emails sent.`);
