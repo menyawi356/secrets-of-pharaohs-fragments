@@ -45,7 +45,7 @@ export default function Navbar() {
             <div className="pyramid-small-left" />
             <div className="pyramid-small-right" />
           </div>
-          <span className="logo-text">Pharaohs' Fragments</span>
+          <span className="logo-text">IPhFL- International Pharaohs' Fragments League</span>
         </Link>
 
         {/* Groups lang-toggle + hamburger on the right */}

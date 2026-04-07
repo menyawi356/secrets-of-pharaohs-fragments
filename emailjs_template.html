@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPHFL Registration Confirmation</title>
+</head>
+<body style="margin:0;padding:0;background:#0a0a0f;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0a0f;padding:40px 0;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+          <!-- HEADER -->
+          <tr>
+            <td align="center" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:16px 16px 0 0;padding:40px 30px 30px;border-bottom:2px solid #c9a227;">
+              <div style="font-size:40px;margin-bottom:8px;">🏛️</div>
+              <h1 style="margin:0;color:#c9a227;font-size:22px;letter-spacing:2px;text-transform:uppercase;">International Pharaohs' Fragments League</h1>
+              <p style="margin:8px 0 0;color:#a0a0b0;font-size:14px;letter-spacing:1px;">IPHFL · Season 1</p>
+            </td>
+          </tr>
+
+          <!-- BODY -->
+          <tr>
+            <td style="background:#111120;padding:36px 36px 28px;border-left:1px solid #1e1e35;border-right:1px solid #1e1e35;">
+
+              <!-- Greeting -->
+              <h2 style="color:#f0e68c;font-size:20px;margin:0 0 6px;">Welcome, {{to_name}}! 🎉</h2>
+              <p style="color:#b0b0c8;font-size:15px;margin:0 0 22px;line-height:1.6;">
+                Your team has been successfully registered for the <strong style="color:#c9a227;">International Pharaohs' Fragments League</strong>. We're thrilled to have you on board!
+              </p>
+
+              <!-- Registration Details Box -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="background:linear-gradient(135deg,rgba(201,162,39,0.08),rgba(201,162,39,0.03));border:1px solid rgba(201,162,39,0.3);border-radius:12px;margin-bottom:26px;">
+                <tr>
+                  <td style="padding:22px 24px;">
+                    <p style="margin:0 0 4px;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1.5px;">Registration Details</p>
+                    <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px;">
+                      <tr>
+                        <td style="color:#888;font-size:14px;padding:5px 0;width:40%;">👤 Participant</td>
+                        <td style="color:#e8e8f8;font-size:14px;font-weight:600;padding:5px 0;">{{to_name}}</td>
+                      </tr>
+                      <tr>
+                        <td style="color:#888;font-size:14px;padding:5px 0;">🌍 Country</td>
+                        <td style="color:#e8e8f8;font-size:14px;font-weight:600;padding:5px 0;">{{country}}</td>
+                      </tr>
+                      <tr>
+                        <td style="color:#888;font-size:14px;padding:5px 0;">⚔️ Team Name</td>
+                        <td style="color:#c9a227;font-size:14px;font-weight:700;padding:5px 0;">{{team_name}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Ambassador Program CTA -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(0,212,255,0.03));border:1px solid rgba(0,212,255,0.3);border-radius:12px;margin-bottom:26px;">
+                <tr>
+                  <td style="padding:22px 24px;">
+                    <p style="margin:0 0 6px;color:#00d4ff;font-size:16px;font-weight:700;">🌟 Become an IPHFL Ambassador!</p>
+                    <p style="margin:0 0 16px;color:#a0c8d8;font-size:14px;line-height:1.6;">
+                      Love IPHFL? Spread the word and earn exclusive rewards! Join our Ambassador Program — every team you refer earns you a point, and <strong style="color:#f0e68c;">the top ambassador wins a special prize</strong>. Help us grow the league and unlock perks just for you.
+                    </p>
+                    <a href="{{ambassador_link}}" style="display:inline-block;background:linear-gradient(135deg,#00d4ff,#0099cc);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 28px;border-radius:8px;letter-spacing:0.5px;">
+                      🚀 Join the Ambassador Program →
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- What's Next -->
+              <p style="color:#c9a227;font-size:15px;font-weight:700;margin:0 0 10px;">📅 What Happens Next?</p>
+              <ul style="color:#b0b0c8;font-size:14px;line-height:1.9;padding-left:20px;margin:0 0 26px;">
+                <li>Registration is open until <strong style="color:#f0e68c;">May 31, 2026</strong>.</li>
+                <li>Competition rounds are held entirely <strong style="color:#f0e68c;">online</strong>.</li>
+                <li>Stay tuned to our channels for round schedules and announcements.</li>
+                <li>Make sure to join our community groups so you never miss an update!</li>
+              </ul>
+
+              <!-- Connect With Us -->
+              <p style="color:#c9a227;font-size:15px;font-weight:700;margin:0 0 14px;">🔗 Connect With Us</p>
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:26px;">
+                <tr>
+                  <td style="padding:4px 0;">
+                    <a href="{{connect_instagram}}" style="color:#e1306c;text-decoration:none;font-size:14px;">📸 Instagram</a>
+                    &nbsp;&nbsp;·&nbsp;&nbsp;
+                    <a href="{{connect_whatsapp}}" style="color:#25d366;text-decoration:none;font-size:14px;">💬 WhatsApp Group</a>
+                    &nbsp;&nbsp;·&nbsp;&nbsp;
+                    <a href="{{connect_whatsapp_ch}}" style="color:#25d366;text-decoration:none;font-size:14px;">📢 WhatsApp Channel</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0;">
+                    <a href="{{connect_telegram_ch}}" style="color:#0088cc;text-decoration:none;font-size:14px;">📣 Telegram Channel</a>
+                    &nbsp;&nbsp;·&nbsp;&nbsp;
+                    <a href="{{connect_telegram_chat}}" style="color:#0088cc;text-decoration:none;font-size:14px;">💭 Telegram Chat</a>
+                    &nbsp;&nbsp;·&nbsp;&nbsp;
+                    <a href="{{connect_linkedin}}" style="color:#0077b5;text-decoration:none;font-size:14px;">💼 LinkedIn</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0;">
+                    <a href="{{connect_twitter}}" style="color:#1da1f2;text-decoration:none;font-size:14px;">🐦 Twitter / X</a>
+                    &nbsp;&nbsp;·&nbsp;&nbsp;
+                    <a href="{{connect_website}}" style="color:#c9a227;text-decoration:none;font-size:14px;">🌐 Website</a>
+                    &nbsp;&nbsp;·&nbsp;&nbsp;
+                    <a href="mailto:{{connect_email}}" style="color:#a0a0b0;text-decoration:none;font-size:14px;">✉️ {{connect_email}}</a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td align="center" style="background:#0e0e1a;border-radius:0 0 16px 16px;border:1px solid #1e1e35;border-top:1px solid rgba(201,162,39,0.2);padding:24px 30px;">
+              <p style="margin:0 0 6px;color:#555;font-size:12px;">© 2026 International Pharaohs' Fragments League · All rights reserved</p>
+              <p style="margin:0;color:#555;font-size:12px;">
+                Questions? Contact us at <a href="mailto:{{connect_email}}" style="color:#c9a227;text-decoration:none;">{{connect_email}}</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
