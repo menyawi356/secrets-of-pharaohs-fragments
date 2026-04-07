@@ -40,8 +40,8 @@ export default function Home() {
 
         <h1 className="hero-title">
           <T
-            en="International Pharaohs' Fragments League"
-            ar="الدوري الدولي لشظايا الفراعنة"
+            en="IPhFL- International Pharaohs' Fragments League"
+            ar="IPhFL- الدوري الدولي لشظايا الفراعنة"
           />
         </h1>
         <p className="hero-subtitle">

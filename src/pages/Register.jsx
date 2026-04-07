@@ -14,7 +14,7 @@ const RECAPTCHA_SITE_KEY  = '6LeCwYwsAAAAABCeRRqfvzAAk5tba3yWoepWuTeO';
 const EMAILJS_SERVICE_ID  = 'service_9sbdti2';
 const EMAILJS_TEMPLATE_ID = 'template_9qjq5m5';
 const EMAILJS_PUBLIC_KEY  = '0wulNcNqCcnTDMG3o';
-const ADMIN_CODE          = '2025202066';
+const ADMIN_CODE          = '20202062055';
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
 async function ensureAuth() {
@@ -66,6 +66,43 @@ async function isEmailRegistered(email) {
     if (!snap.empty) return true;
   }
   return false;
+}
+
+// ─── EMAIL DELIVERABILITY CHECK ───────────────────────────────────────────────
+const DISPOSABLE_DOMAINS = new Set([
+  'mailinator.com','guerrillamail.com','tempmail.com','10minutemail.com',
+  'throwaway.email','yopmail.com','trashmail.com','fakeinbox.com',
+  'sharklasers.com','guerrillamailblock.com','grr.la','guerrillamail.info',
+  'spam4.me','maildrop.cc','dispostable.com','spamgourmet.com',
+  'trashmail.me','getairmail.com','discard.email','spamevader.com',
+]);
+
+async function checkEmailDeliverable(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!emailRegex.test(email)) {
+    return { ok: false, reason: 'Invalid email format.' };
+  }
+  const domain = email.split('@')[1].toLowerCase();
+  if (DISPOSABLE_DOMAINS.has(domain)) {
+    return { ok: false, reason: `Disposable email addresses are not allowed (${domain}).` };
+  }
+  try {
+    const res = await fetch(
+      `https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=MX`,
+      { signal: AbortSignal.timeout(6000) }
+    );
+    if (res.ok) {
+      const data = await res.json();
+      if (data.Status === 0 && Array.isArray(data.Answer) && data.Answer.length > 0) {
+        return { ok: true };
+      }
+      return { ok: false, reason: `The domain "${domain}" does not appear to accept emails. Please use a valid working email address.` };
+    }
+  } catch {
+    console.warn('DNS check failed for', domain, '— proceeding anyway');
+    return { ok: true };
+  }
+  return { ok: false, reason: `Could not verify the email domain "${domain}". Please use a working email address.` };
 }
 
 async function isTeamNameTaken(teamName) {
@@ -265,7 +302,8 @@ export default function Register() {
   const [m2, setM2] = useState({ ...EMPTY_MEMBER });
   const [m3, setM3] = useState({ ...EMPTY_MEMBER });
   const [inlineError, setInlineError] = useState('');
-  const [status, setStatus] = useState('idle'); // idle | checking | registering | sending
+  const [status, setStatus] = useState('idle'); // idle | checking | registering | sending | failed
+  const [registrationFailed, setRegistrationFailed] = useState(false);
   const leaderNameRef = useRef(null);
   const [adminOpen, setAdminOpen] = useState(false);
 
@@ -293,6 +331,7 @@ export default function Register() {
   const handleSubmit = async e => {
     e.preventDefault();
     setInlineError('');
+    setRegistrationFailed(false);
 
     const leaderEmail   = leader.email.trim().toLowerCase();
     const m2Email       = m2Open && m2.email ? m2.email.trim().toLowerCase() : null;
@@ -315,7 +354,24 @@ export default function Register() {
         setStatus('idle'); return;
       }
 
-      // Duplicate emails
+      // Email deliverability checks
+      setStatus('checking');
+      const emailsToCheck = [
+        { email: leaderEmail, label: 'Leader email' },
+        ...(m2Email ? [{ email: m2Email, label: 'Member 2 email' }] : []),
+        ...(m3Email ? [{ email: m3Email, label: 'Member 3 email' }] : []),
+      ];
+
+      for (const { email, label } of emailsToCheck) {
+        const check = await checkEmailDeliverable(email);
+        if (!check.ok) {
+          setInlineError(`${label} (${email}) failed verification: ${check.reason}`);
+          setRegistrationFailed(true);
+          setStatus('idle'); return;
+        }
+      }
+
+      // Duplicate emails (already-registered check)
       for (const email of [leaderEmail, m2Email, m3Email].filter(Boolean)) {
         if (await isEmailRegistered(email)) {
           setInlineError(`The email ${email} has already been used. Each participant may only register once.`);
@@ -360,9 +416,12 @@ export default function Register() {
       setTeamName(''); setLeader({ name:'', email:'', school:'', country:'' });
       setM2({ ...EMPTY_MEMBER }); setM3({ ...EMPTY_MEMBER });
       setM2Open(false); setM3Open(false);
+      setRegistrationFailed(false);
 
     } catch (err) {
       console.error(err);
+      setRegistrationFailed(true);
+      setInlineError('Registration failed due to a technical error. Please check your connection and try again.');
       showToast('⚠️ Registration failed. Please check your connection and try again.', 'error');
     } finally {
       setStatus('idle');
@@ -371,7 +430,7 @@ export default function Register() {
 
   const btnLabel = {
     idle:        p('Submit Registration', 'إرسال التسجيل'),
-    checking:    p('Verifying…', 'جاري التحقق…'),
+    checking:    p('Verifying emails…', 'جاري التحقق من البريد…'),
     registering: p('Registering…', 'جاري التسجيل…'),
     sending:     p('Sending confirmation…', 'إرسال التأكيد…'),
   }[status];
@@ -409,7 +468,31 @@ export default function Register() {
           </div>
         )}
 
-        {inlineError && (
+        {registrationFailed && (
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(220,38,38,0.15), rgba(220,38,38,0.05))',
+            border: '2px solid rgba(220,38,38,0.6)',
+            borderRadius: '12px',
+            padding: '1rem 1.25rem',
+            marginBottom: '1rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.4rem',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, fontSize: '1rem', color: '#f87171' }}>
+              <span style={{ fontSize: '1.3rem' }}>❌</span>
+              <span>{p('Registration Failed', 'فشل التسجيل')}</span>
+            </div>
+            <div style={{ fontSize: '0.88rem', color: '#fca5a5', lineHeight: 1.5 }}>
+              {inlineError || p(
+                'Your registration could not be completed. Please fix the issue above and try again.',
+                'تعذّر إتمام تسجيلك. يرجى تصحيح المشكلة أعلاه والمحاولة مجدداً.'
+              )}
+            </div>
+          </div>
+        )}
+
+        {!registrationFailed && inlineError && (
           <div className="inline-error">
             <span>⚠️</span>
             <span>{inlineError}</span>
@@ -514,9 +597,16 @@ export default function Register() {
             className="submit-btn"
             type="submit"
             disabled={status !== 'idle'}
-            style={{ marginTop: '1.25rem' }}
+            style={{
+              marginTop: '1.25rem',
+              ...(registrationFailed ? {
+                background: 'linear-gradient(135deg, #dc2626, #991b1b)',
+                boxShadow: '0 0 20px rgba(220,38,38,0.4)',
+              } : {}),
+            }}
+            onClick={() => { if (registrationFailed) { setRegistrationFailed(false); setInlineError(''); } }}
           >
-            {btnLabel}
+            {registrationFailed ? p('❌ Try Again', '❌ حاول مجدداً') : btnLabel}
           </button>
         </form>
       </div>
