@@ -1253,6 +1253,10 @@ body[dir="rtl"] ul, body[dir="rtl"] ol {
   font-family: 'Outfit', sans-serif;
 }
 .dash-btn:hover { background: rgba(255,215,0,0.2); }
+.dash-btn.active {
+  background: var(--gold);
+  color: #000;
+}
 .dash-btn.close {
   background: rgba(255,107,107,0.12);
   border-color: rgba(255,107,107,0.6);
@@ -1462,4 +1466,56 @@ a { color: var(--cyan); }
   .nav-link { min-height: 44px; display: flex; align-items: center; }
   .cta-button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
   .faq-question { min-height: 52px; }
+}
+
+/* ═══════════════════ AUTH & COMPETITION PAGES ═══════════════════ */
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--nav-h) - 4rem);
+  padding: 2rem 1rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  margin: 0;
+  animation: fadeInUp 0.8s ease both;
+}
+
+.auth-success {
+  border-color: rgba(100,200,100,0.5);
+  background: rgba(100,200,100,0.05);
+}
+
+.input-error {
+  border-color: rgba(255,107,107,0.7) !important;
+  background: rgba(255,107,107,0.05) !important;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 215, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--gold);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.competition-hero {
+  animation: fadeInUp 0.8s ease both;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext.jsx';
+import { useExamAuth } from '../context/ExamAuthContext.jsx';
 
 const NAV_ITEMS = [
   { to: '/',            en: 'Home',              ar: 'الرئيسية' },
@@ -8,14 +9,16 @@ const NAV_ITEMS = [
   { to: '/meet-us',     en: 'Meet Us',           ar: 'تعرف علينا' },
   { to: '/timeline',    en: 'Timeline',          ar: 'الجدول الزمني' },
   { to: '/partners',    en: 'Partners & Prizes', ar: 'الشركاء والجوائز' },
-  { to: '/ambassador',  en: '🏛️ Ambassadors',   ar: '🏛️ السفراء' },
-  { to: '/register',    en: 'Register',          ar: 'التسجيل' },
+  { to: '/ambassador',  en: 'Ambassadors',   ar: 'السفراء' },
+  { to: '/competition', en: 'Competition',       ar: 'المسابقة' },
   { to: '/faq',         en: 'FAQ',               ar: 'الأسئلة الشائعة' },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { lang, setLang } = useLang();
+  const { session, endSession } = useExamAuth();
+  const navigate = useNavigate();
 
   // Close on outside click
   useEffect(() => {
@@ -61,6 +64,16 @@ export default function Navbar() {
               onClick={() => setLang('ar')}
               aria-pressed={lang === 'ar'}
             >عربي</button>
+            
+            {session ? (
+               <button className="lang-btn" onClick={() => { endSession(); navigate('/'); }} style={{ borderColor: 'rgba(255,107,107,0.4)', color: '#ff8888' }}>
+                 {lang === 'ar' ? 'خروج' : 'Logout'}
+               </button>
+            ) : (
+               <button className="lang-btn" onClick={() => navigate('/login')} style={{ borderColor: 'var(--gold)', color: 'var(--gold)' }}>
+                 {lang === 'ar' ? 'دخول' : 'Login'}
+               </button>
+            )}
           </div>
 
           <button

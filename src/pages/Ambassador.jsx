@@ -106,7 +106,7 @@ function MyLinkPanel({ ambassador, onLogout }) {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '0.5rem', gap: '1rem' }}>
         <div style={{ fontFamily: 'Cinzel,serif', color: 'var(--gold)', fontSize: '1.05rem' }}>
-          🏛️ Welcome back, {ambassador.name}!
+           Welcome back, {ambassador.name}!
         </div>
         <button onClick={onLogout} style={{
           background: 'none', border: '1px solid rgba(255,255,255,0.15)',
@@ -352,7 +352,7 @@ function SignupForm({ onSuccess }) {
         🔒 {p('Protected by reCAPTCHA · One account per email', 'محمي بـ reCAPTCHA · حساب واحد لكل بريد إلكتروني')}
       </p>
       <button className="submit-btn" type="submit" disabled={loading}>
-        {loading ? p('Setting up your link…', 'جاري إعداد رابطك…') : p('Become an Ambassador 🏛️', 'كن سفيراً 🏛️')}
+        {loading ? p('Setting up your link…', 'جاري إعداد رابطك…') : p('Become an Ambassador', 'كن سفيراً')}
       </button>
     </form>
   );
@@ -417,7 +417,7 @@ export default function Ambassador() {
     <>
       {/* Hero */}
       <div style={{ textAlign: 'center', padding: '2rem 1rem 1.5rem' }}>
-        <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🏛️⚡🌍</div>
+        <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}></div>
         <h1 style={{ fontFamily: 'Cinzel,serif', fontSize: 'clamp(1.6rem,4vw,2.4rem)', color: 'var(--gold)', marginBottom: '0.6rem', textShadow: '0 0 30px rgba(255,215,0,0.3)' }}>
           {p('Ambassador Program', 'برنامج السفراء')}
         </h1>

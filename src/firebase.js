@@ -1,17 +1,23 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
+import { getAuth, connectAuthEmulator } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCSmW4fFaM3u7GboZWD4Rkd66eBiWFBNXQ",
-  authDomain: "iphzl-cd017.firebaseapp.com",
-  projectId: "iphzl-cd017",
-  storageBucket: "iphzl-cd017.firebasestorage.app",
-  messagingSenderId: "1040430767030",
-  appId: "1:1040430767030:web:d01a274f45a125c4ca7f17",
-  measurementId: "G-7FB7K3VMN0"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
-export const db   = getFirestore(app);
+export const db = getFirestore(app);
 export const auth = getAuth(app);
+
+// Use emulators if running locally and explicitly set
+// if (import.meta.env.DEV && import.meta.env.VITE_USE_EMULATOR === 'true') {
+//   connectAuthEmulator(auth, 'http://localhost:9099');
+//   connectFirestoreEmulator(db, 'localhost', 8080);
+// }
