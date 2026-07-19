@@ -1,12 +1,12 @@
 /* ===== Get Your Certificate page ===== */
 .get-certificate-page {
-  padding: 40px 0 80px;
+  padding: 400px 0 80px;
   text-align: center;
 }
 .get-certificate-page .page-title {
   font-size: 2.2rem;
   color: var(--gold);
-  margin-bottom: 10px;
+  margin-bottom: 100px;
   font-weight: 800;
 }
 .get-certificate-page .page-subtitle {
@@ -16,7 +16,7 @@
   line-height: 1.7;
 }
 .certificate-frame-wrap {
-  width: 100%;
+  width: 1000%;
   max-width: 1100px;           /* ← غيرت من 760 لـ 1100 */
   margin: 0 auto;
   border-radius: var(--radius);
