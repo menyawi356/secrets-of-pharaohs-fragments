@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import {
   collection, getDocs, query, orderBy,
 } from 'firebase/firestore';
@@ -29,6 +29,7 @@ function AdminDashboard({ onClose }) {
   async function loadTeams() {
     setLoading(true);
     try {
+      await ensureAuth();
       const snap = await getDocs(query(collection(db, 'registrations'), orderBy('submitted_at', 'desc')));
       setTeams(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     } catch (err) {
@@ -194,7 +195,6 @@ export default function Register() {
   // Admin secret: type the code into the hidden input
   const [adminSeq, setAdminSeq] = useState('');
   const [adminOpen, setAdminOpen] = useState(false);
-  const hiddenRef = useRef(null);
 
   useEffect(() => {
     if (adminSeq === ADMIN_CODE) {

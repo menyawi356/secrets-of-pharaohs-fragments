@@ -1,6 +1,6 @@
 import { db } from './firebase';
 import {
-  doc, getDoc, setDoc, collection, query, where, getDocs, serverTimestamp, onSnapshot
+  doc, getDoc, setDoc, collection, serverTimestamp, onSnapshot
 } from 'firebase/firestore';
 
 // ─── CONFIG ─────────────────────────────────────────────────────────────────
@@ -114,13 +114,13 @@ export async function teamLogin(teamNameInput, emailInput) {
  * Marks a question as answered/unanswered for a team. Stored at
  * progress/{team_key} as a map of { [questionId]: { status, answeredAt } }
  */
-export async function saveQuestionProgress(teamKey, questionId, status) {
+export async function saveQuestionProgress(teamKey, questionId, status, answer, attempts) {
   const ref = doc(db, 'progress', encodeURIComponent(teamKey));
   await setDoc(ref, {
     team_key: teamKey,
     updated_at: serverTimestamp(),
     answers: {
-      [questionId]: { status, answeredAt: serverTimestamp() }
+      [questionId]: { status, answer, attempts, answeredAt: serverTimestamp() }
     }
   }, { merge: true });
 }

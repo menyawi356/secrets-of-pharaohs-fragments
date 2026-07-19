@@ -61,7 +61,7 @@ export default function StoryQuiz({ onScoreChange }) {
     // which are still untouched.
     const persistProgress = (status, rawAnswer, attempts) => {
       if (session?.team_key && !session.isAdmin) {
-        saveQuestionProgress(session.team_key, id, status).catch(() => {
+        saveQuestionProgress(session.team_key, id, status, rawAnswer, attempts).catch(() => {
           // Non-fatal: if this write fails the team can keep working,
           // it just won't show live on the admin dashboard.
         });

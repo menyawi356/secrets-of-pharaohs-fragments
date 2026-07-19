@@ -17,6 +17,7 @@ import Ambassador from './pages/Ambassador.jsx';
 import Competition from './pages/Competition.jsx';
 import Login from './pages/Login.jsx';
 import FinishSignIn from './pages/FinishSignIn.jsx';
+import GetCertificate from './pages/GetCertificate.jsx';
 
 export default function App() {
   const { lang } = useLang();
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/competition"   element={<ProtectedRoute><Competition /></ProtectedRoute>} />
             <Route path="/faq"           element={<FAQ />} />
             <Route path="/ambassador"    element={<Ambassador />} />
+            <Route path="/certificate"   element={<GetCertificate />} />
             <Route path="/login"         element={<Login />} />
             <Route path="/finishSignIn"  element={<FinishSignIn />} />
             {/* Redirect old register link to competition */}

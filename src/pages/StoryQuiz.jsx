@@ -78,11 +78,6 @@ export default function StoryQuiz({ onScoreChange }) {
                 const ansData = answers[item.id];
                 const attempts = ansData?.attempts || 0;
 
-                // Extract number and unit for display
-                const answerParts = item.answer.split(' ');
-                const answerNumber = answerParts[0];
-                const answerUnit = answerParts.slice(1).join(' ');
-
                 // Build display answer: "30 metres"
                 const displayAnswer = item.answer;
 
