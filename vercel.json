@@ -1,11 +1,8 @@
 {
-  "builds": [
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "installCommand": "npm install --legacy-peer-deps"
-      }
+      "source": "/((?!assets/).*)",
+      "destination": "/index.html"
     }
   ]
 }
