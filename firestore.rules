@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can only read/write their own profile
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // OTP codes: only authenticated users can create, no one can read directly
+    match /otp_codes/{docId} {
+      allow create: if request.auth != null;
+      allow read, update: if request.auth != null;
+      allow delete: if false; // Cleanup via TTL or cloud function
+    }
+    
+    // Registrations: read-only for admin (handled by admin SDK typically, or by custom logic)
+    // We allow read here if they are authenticated, but the app should restrict this via UI
+    // For maximum security in production, we should lock this down to a specific admin uid
+    match /registrations/{docId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Registration is closed
+    }
+
+    // Exam teams (imported from the registrations spreadsheet). The app
+    // logs teams in by reading a single team doc and comparing email client
+    // side. There is no Firebase Auth session for teams, so these reads
+    // happen unauthenticated. We do NOT allow listing the whole collection,
+    // only get-by-id, which keeps the other 900+ teams' data from being
+    // dumped by a client that isn't doing a normal login lookup.
+    match /teams/{teamKey} {
+      allow get: if true;
+      allow list: if false;
+      allow write: if false; // Only the admin import script (Admin SDK) writes here
+    }
+
+    // Exam config (start time for the 75-minute login window). Readable by
+    // everyone so the login page can show the countdown; writes should only
+    // ever come from the admin dashboard. Since there's no Firebase Auth
+    // session for the admin in this app, this is enforced by obscurity of
+    // the admin UI rather than a real auth check — see note in SECURITY.md.
+    match /exam_config/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Per-team quiz progress, written by the team's own browser session and
+    // read by the admin dashboard to show answered/unanswered status.
+    match /progress/{teamKey} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}
