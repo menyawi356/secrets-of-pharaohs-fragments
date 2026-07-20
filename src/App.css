@@ -185,7 +185,7 @@
 
 /* ===== Get Your Certificate page ===== */
 .get-certificate-page {
-  padding: 40px 0 80px;
+  padding: 400px 0 800px;
   text-align: center;
 }
 .get-certificate-page .page-title {
@@ -201,10 +201,10 @@
   line-height: 1.7;
 }
 .certificate-frame-wrap {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 10000vw;
+  max-width: 1000vw;
+  margin-left: calc(500% - 500vw);
+  margin-right: calc(500% - 500vw);
   border-radius: 0;
   overflow: hidden;
   border-top: 1px solid var(--glass-border);
@@ -212,9 +212,9 @@
   background: var(--dark);
 }
 .certificate-frame {
-  width: 100%;
-  height: calc(100vh - var(--nav-h) - 40px);
-  min-height: 900px;
+  width: 1000%;
+  height: calc(1000vh - var(--nav-h) - 400px);
+  min-height: 9000px;
   border: none;
   display: block;
 }
