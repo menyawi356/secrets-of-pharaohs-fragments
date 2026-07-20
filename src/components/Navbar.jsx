@@ -10,7 +10,8 @@ const NAV_ITEMS = [
   { to: '/timeline',    en: 'Timeline',          ar: 'الجدول الزمني' },
   { to: '/partners',    en: 'Partners & Prizes', ar: 'الشركاء والجوائز' },
   { to: '/ambassador',  en: 'Ambassadors',       ar: 'السفراء' },
-   { to: '/ambassador',  en: 'GetCertificate',       ar: 'احصل علي شهادتك' },
+  { to: '/competition', en: 'Competition',       ar: 'المسابقة' },
+  { to: '/register',    en: 'Register',          ar: 'التسجيل' },
   { to: '/faq',         en: 'FAQ',               ar: 'الأسئلة الشائعة' },
 ];
 
