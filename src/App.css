@@ -185,46 +185,39 @@
 
 /* ===== Get Your Certificate page ===== */
 .get-certificate-page {
-  padding: 60px 20px 80px; /* تقليل الـ Padding الخرافي (كان 400px و 800px!) */
+  padding: 40px 0 80px;
   text-align: center;
-  width: 100%;
 }
-
 .get-certificate-page .page-title {
   font-size: 2.2rem;
   color: var(--gold);
   margin-bottom: 10px;
   font-weight: 800;
 }
-
 .get-certificate-page .page-subtitle {
   color: var(--text-muted);
   max-width: 640px;
   margin: 0 auto 32px;
   line-height: 1.7;
 }
-
-/* الحاوية الخارجية للـ iframe */
 .certificate-frame-wrap {
-  width: 100%;
-  max-width: 1400px; /* عرض ممتاز يخلي الكارت يفرد ويكبر براحته */
-  margin: 0 auto;    /* تتسنيتر في النص */
-  border-radius: 16px;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  border-radius: 0;
   overflow: hidden;
-  border: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
   background: var(--dark);
 }
-
-/* الـ iframe نفسه */
 .certificate-frame {
   width: 100%;
-  height: 850px;     /* ارتفاع مناسب جداً يغطي الكارت والشهادة بدون scrollbars */
+  height: calc(100vh - var(--nav-h) - 40px);
+  min-height: 900px;
   border: none;
   display: block;
 }
-
 @media (max-width: 860px) {
-  .certificate-frame { 
-    height: 1100px;  /* ارتفاع يناسب الموبايل لما الكارتين ينزلوا تحت بعض */
-  }
+  .certificate-frame { height: 1500px; min-height: unset; }
 }
