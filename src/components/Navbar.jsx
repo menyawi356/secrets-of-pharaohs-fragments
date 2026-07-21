@@ -1,18 +1,25 @@
-import { useState, useEffect } from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
-import { useLang } from '../context/LanguageContext.jsx';
-import { useExamAuth } from '../context/ExamAuthContext.jsx';
+import { useState, useEffect } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
+import { useLang } from "../context/LanguageContext.jsx";
+import { useExamAuth } from "../context/ExamAuthContext.jsx";
 
 const NAV_ITEMS = [
-  { to: '/',            en: 'Home',              ar: 'الرئيسية' },
-  { to: '/about',       en: 'About',             ar: 'عن الدوري' },
-  { to: '/meet-us',     en: 'Meet Us',           ar: 'تعرف علينا' },
-  { to: '/timeline',    en: 'Timeline',          ar: 'الجدول الزمني' },
-  { to: '/partners',    en: 'Partners & Prizes', ar: 'الشركاء والجوائز' },
-  { to: '/ambassador',  en: 'Ambassadors',   ar: 'السفراء' },
-  { to: '/competition', en: 'Competition',       ar: 'المسابقة' },
-  { to: '/certificate', en: 'Get Your Certificate', ar: 'استخرج شهادتك' },
-  { to: '/faq',         en: 'FAQ',               ar: 'الأسئلة الشائعة' },
+  { to: "/", en: "Home", ar: "الرئيسية" },
+  { to: "/about", en: "About", ar: "عن الدوري" },
+  { to: "/meet-us", en: "Meet Us", ar: "تعرف علينا" },
+  { to: "/timeline", en: "Timeline", ar: "الجدول الزمني" },
+  { to: "/partners", en: "Partners & Prizes", ar: "الشركاء والجوائز" },
+  { to: "/ambassador", en: "Ambassadors", ar: "السفراء" },
+  { to: "/competition", en: "Competition", ar: "المسابقة" },
+
+  {
+    href: "/certificate.html",
+    external: true,
+    en: "Get Your Certificate",
+    ar: "استخرج شهادتك",
+  },
+
+  { to: "/faq", en: "FAQ", ar: "الأسئلة الشائعة" },
 ];
 
 export default function Navbar() {
@@ -25,24 +32,28 @@ export default function Navbar() {
   useEffect(() => {
     if (!menuOpen) return;
     const handler = (e) => {
-      if (!e.target.closest('.nav-container') && !e.target.closest('.nav-links')) {
+      if (
+        !e.target.closest(".nav-container") &&
+        !e.target.closest(".nav-links")
+      ) {
         setMenuOpen(false);
       }
     };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, [menuOpen]);
 
   // Lock body scroll when drawer is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="nav-container">
-
         <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
           <div className="pyramid-nav-logo">
             <div className="pyramid-main" />
@@ -56,31 +67,49 @@ export default function Navbar() {
         <div className="nav-controls">
           <div className="lang-toggle">
             <button
-              className={`lang-btn${lang === 'en' ? ' active' : ''}`}
-              onClick={() => setLang('en')}
-              aria-pressed={lang === 'en'}
-            >EN</button>
+              className={`lang-btn${lang === "en" ? " active" : ""}`}
+              onClick={() => setLang("en")}
+              aria-pressed={lang === "en"}
+            >
+              EN
+            </button>
             <button
-              className={`lang-btn${lang === 'ar' ? ' active' : ''}`}
-              onClick={() => setLang('ar')}
-              aria-pressed={lang === 'ar'}
-            >عربي</button>
-            
+              className={`lang-btn${lang === "ar" ? " active" : ""}`}
+              onClick={() => setLang("ar")}
+              aria-pressed={lang === "ar"}
+            >
+              عربي
+            </button>
+
             {session ? (
-               <button className="lang-btn" onClick={() => { endSession(); navigate('/'); }} style={{ borderColor: 'rgba(255,107,107,0.4)', color: '#ff8888' }}>
-                 {lang === 'ar' ? 'خروج' : 'Logout'}
-               </button>
+              <button
+                className="lang-btn"
+                onClick={() => {
+                  endSession();
+                  navigate("/");
+                }}
+                style={{
+                  borderColor: "rgba(255,107,107,0.4)",
+                  color: "#ff8888",
+                }}
+              >
+                {lang === "ar" ? "خروج" : "Logout"}
+              </button>
             ) : (
-               <button className="lang-btn" onClick={() => navigate('/login')} style={{ borderColor: 'var(--gold)', color: 'var(--gold)' }}>
-                 {lang === 'ar' ? 'دخول' : 'Login'}
-               </button>
+              <button
+                className="lang-btn"
+                onClick={() => navigate("/login")}
+                style={{ borderColor: "var(--gold)", color: "var(--gold)" }}
+              >
+                {lang === "ar" ? "دخول" : "Login"}
+              </button>
             )}
           </div>
 
           <button
-            className={`menu-toggle${menuOpen ? ' open' : ''}`}
-            onClick={() => setMenuOpen(v => !v)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            className={`menu-toggle${menuOpen ? " open" : ""}`}
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="nav-links"
           >
@@ -92,19 +121,31 @@ export default function Navbar() {
 
         <ul
           id="nav-links"
-          className={`nav-links${menuOpen ? ' open' : ''}`}
+          className={`nav-links${menuOpen ? " open" : ""}`}
           role="list"
         >
-          {NAV_ITEMS.map(item => (
-            <li key={item.to}>
-              <NavLink
-                className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
-                to={item.to}
-                end={item.to === '/'}
-                onClick={() => setMenuOpen(false)}
-              >
-                {lang === 'ar' ? item.ar : item.en}
-              </NavLink>
+          {NAV_ITEMS.map((item) => (
+            <li key={item.to || item.href}>
+              {item.external ? (
+                <a
+                  href={item.href}
+                  className="nav-link"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {lang === "ar" ? item.ar : item.en}
+                </a>
+              ) : (
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? " active" : ""}`
+                  }
+                  to={item.to}
+                  end={item.to === "/"}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {lang === "ar" ? item.ar : item.en}
+                </NavLink>
+              )}
             </li>
           ))}
         </ul>
